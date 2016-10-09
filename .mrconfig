@@ -30,8 +30,8 @@ push = echo "not pushing this one, read-only"
 
 ### homes[h]ick repos
 
-[.homesick/repos/mr-castle]
-checkout = git clone 'git@github.com:tomhoover/mr-castle.git' 'mr-castle'
+#[.homesick/repos/mr-castle]
+#checkout = git clone 'git@github.com:tomhoover/mr-castle.git' 'mr-castle'
 
 [.homesick/repos/dotfiles-castle]
 checkout = git clone 'git@github.com:tomhoover/dotfiles-castle.git' 'dotfiles-castle'
@@ -41,16 +41,16 @@ fixups =
 	[ home/.config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && sudo cp home/.config/crontab/`hostname -s`.crontab /etc/crontab || true
 	[ -f home/.config/crontab/`hostname -s`.`whoami`.crontab ] && crontab home/.config/crontab/`hostname -s`.`whoami`.crontab || true
 
-[.homesick/repos/private-castle]
-checkout =
-	git clone 'manuel:git/private-castle.git' 'private-castle'
-	cd "$MR_REPO"
-	git remote add drobo drobo:/mnt/DroboFS/Shares/git/private-castle.git
-	git remote add all manuel:git/private-castle.git
-	git remote set-url --add --push all drobo:/mnt/DroboFS/Shares/git/private-castle.git
-	git remote set-url --add --push all manuel:git/private-castle.git
-fixups =
-	chmod -R go= ~/.config
+#[.homesick/repos/private-castle]
+#checkout =
+#	git clone 'manuel:git/private-castle.git' 'private-castle'
+#	cd "$MR_REPO"
+#	git remote add drobo drobo:/mnt/DroboFS/Shares/git/private-castle.git
+#	git remote add all manuel:git/private-castle.git
+#	git remote set-url --add --push all drobo:/mnt/DroboFS/Shares/git/private-castle.git
+#	git remote set-url --add --push all manuel:git/private-castle.git
+#fixups =
+#	chmod -R go= ~/.config
 
 ### common repos
 
