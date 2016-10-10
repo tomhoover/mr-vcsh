@@ -1,0 +1,2 @@
+[$HOME/.config/vcsh/repo.d/homebrew.git]
+checkout = vcsh clone git@github.com:tomhoover/homebrew-vcsh.git homebrew

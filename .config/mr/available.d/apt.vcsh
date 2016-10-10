@@ -1,0 +1,2 @@
+[$HOME/.config/vcsh/repo.d/apt.git]
+checkout = vcsh clone git@github.com:tomhoover/apt-vcsh.git apt
