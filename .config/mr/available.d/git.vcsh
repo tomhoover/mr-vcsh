@@ -1,2 +1,3 @@
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout = vcsh clone git@github.com:tomhoover/git-vcsh.git git
+fixups = chmod -R go= ~/.config

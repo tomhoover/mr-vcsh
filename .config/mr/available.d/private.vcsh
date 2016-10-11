@@ -6,6 +6,4 @@ checkout =
     git remote add all manuel:git/private-vcsh.git
     git remote set-url --add --push all drobo:/mnt/DroboFS/Shares/git/private-vcsh.git
     git remote set-url --add --push all manuel:git/private-vcsh.git
-fixups =
-    chmod -R go= ~/.config
-
+fixups = chmod -R go= ~/.config
