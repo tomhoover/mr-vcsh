@@ -29,19 +29,19 @@ fixups =
 [src/github.com/altercation/solarized]
 checkout = git clone 'https://github.com/altercation/solarized.git' 'solarized'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = echo "not pushing this one, read-only"
+push = :
 
 [src/github.com/dhess/applescripts]
 checkout = git clone 'https://github.com/dhess/applescripts.git' 'applescripts'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = echo "not pushing this one, read-only"
+push = :
 
 [src/github.com/donmelton/video_transcoding]
 checkout = git clone 'https://github.com/donmelton/video_transcoding.git' 'video_transcoding'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = echo "not pushing this one, read-only"
+push = :
 
 [src/github.com/mathiasbynens/dotfiles]
 checkout = git clone 'https://github.com/mathiasbynens/dotfiles.git' 'dotfiles'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = echo "not pushing this one, read-only"
+push = :

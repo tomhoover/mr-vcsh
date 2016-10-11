@@ -1,7 +1,3 @@
-[src/git.spwhitton.name/dotfiles]
-checkout = git clone 'git://spwhitton.name/dotfiles.git' 'dotfiles'
-fixups = ln -sf "$MR_REPO/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
-
 [src/github.com/adrianlopezroche/fdupes]
 checkout =
     git clone 'git@github.com:tomhoover/fdupes.git' 'fdupes'
@@ -9,14 +5,22 @@ checkout =
     git remote add upstream git://github.com/adrianlopezroche/fdupes.git
     git fetch upstream
 
+# read-only repos
+
 [src/github.com/nojhan/liquidprompt]
 checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = echo "not pushing this one, read-only"
+push = :
 
 [src/github.com/rupa/z]
 checkout = git clone 'https://github.com/rupa/z.git' 'z'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = echo "not pushing this one, read-only"
+push = :
 #fixups =
 #	sudo ln -sf "$MR_REPO/z.1" /usr/local/share/man/man1/z.1
+
+[src/git.spwhitton.name/dotfiles]
+checkout = git clone 'git://spwhitton.name/dotfiles.git' 'dotfiles'
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
+fixups = ln -sf "$MR_REPO/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
+push = :
