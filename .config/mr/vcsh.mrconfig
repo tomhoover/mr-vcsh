@@ -1,0 +1,29 @@
+[$HOME/.config/vcsh/repo.d/crontab.git]
+checkout = vcsh clone git@github.com:tomhoover/crontab-vcsh.git crontab
+fixups =
+	chmod -R go= ~/.config
+	cd "$MR_REPO"
+	[ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && sudo cp .config/crontab/`hostname -s`.crontab /etc/crontab || true
+	[ -f .config/crontab/`hostname -s`.`whoami`.crontab ] && crontab .config/crontab/`hostname -s`.`whoami`.crontab || true
+
+[$HOME/.config/vcsh/repo.d/dotfiles.git]
+checkout = vcsh clone git@github.com:tomhoover/dotfiles-vcsh.git dotfiles
+fixups = chmod -R go= ~/.config
+
+[$HOME/.config/vcsh/repo.d/git.git]
+checkout = vcsh clone git@github.com:tomhoover/git-vcsh.git git
+fixups = chmod -R go= ~/.config
+
+[$HOME/.config/vcsh/repo.d/mr.git]
+checkout = vcsh clone git@github.com:tomhoover/mr-vcsh.git mr
+fixups = chmod -R go= ~/.config
+
+[$HOME/.config/vcsh/repo.d/private.git]
+checkout =
+    vcsh clone manuel:git/private-vcsh.git private
+    cd "$MR_REPO"
+    git remote add drobo drobo:/mnt/DroboFS/Shares/git/private-vcsh.git
+    git remote add all manuel:git/private-vcsh.git
+    git remote set-url --add --push all drobo:/mnt/DroboFS/Shares/git/private-vcsh.git
+    git remote set-url --add --push all manuel:git/private-vcsh.git
+fixups = chmod -R go= ~/.config

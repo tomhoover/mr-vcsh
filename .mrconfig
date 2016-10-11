@@ -5,7 +5,7 @@ git_dum = git diff --name-status upstream/master 2> /dev/null || true
 
 ### vcsh repos
 
-include = cat ~/.config/mr/config.d/*
+include = cat ~/.config/mr/vcsh.mrconfig
 
 ### system/host/directory-specific repos
 
