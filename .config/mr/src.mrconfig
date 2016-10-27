@@ -10,10 +10,9 @@ skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 
 [src/github.com/rupa/z]
 checkout = git clone 'https://github.com/rupa/z.git' 'z'
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
-#fixups =
-#	sudo ln -sf "$MR_REPO/z.1" /usr/local/share/man/man1/z.1
+fixups = ln -sf "$MR_REPO/z.1" /usr/local/share/man/man1/z.1 2>/dev/null
 
 [src/git.spwhitton.name/dotfiles]
 checkout = git clone 'git://spwhitton.name/dotfiles.git' 'dotfiles'
