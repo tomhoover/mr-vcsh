@@ -12,18 +12,19 @@ fixups = chmod -R go= ~/.config
 
 [$HOME/.config/vcsh/repo.d/crontab.git]
 checkout = vcsh clone git@github.com:tomhoover/crontab-vcsh.git crontab
+skip = ! mylaptop
 fixups =
 	chmod -R go= ~/.config
 	cd "$MR_REPO"
 	[ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && sudo cp .config/crontab/`hostname -s`.crontab /etc/crontab || true
 	[ -f .config/crontab/`hostname -s`.`whoami`.crontab ] && crontab .config/crontab/`hostname -s`.`whoami`.crontab || true
-skip = ! mylaptop
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
     vcsh clone manuel:git/private-vcsh.git private
     cd "$MR_REPO"
     git remote add drobo drobo:/mnt/DroboFS/Shares/git/private-vcsh.git
+skip = ! mylaptop
 push = vcsh private push origin; vcsh private push drobo
 fixups = chmod -R go= ~/.config
-skip = ! mylaptop
+
