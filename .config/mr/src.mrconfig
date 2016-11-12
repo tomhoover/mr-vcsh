@@ -8,6 +8,16 @@ skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 
 # read-only repos
 
+[src/github.com/so-fancy/diff-so-fancy]
+checkout = git clone 'https://github.com/so-fancy/diff-so-fancy.git' 'diff-so-fancy'
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups =
+    mkdir -p "$HOME/bin/libexec"
+    ln -sf "$MR_REPO/libexec/diff-so-fancy.pl" "$HOME/bin/libexec/diff-so-fancy.pl"
+    ln -sf "$MR_REPO/third_party/diff-highlight/diff-highlight" "$HOME/bin/diff-highlight"
+    ln -sf "$MR_REPO/diff-so-fancy" "$HOME/bin/diff-so-fancy"
+
 [src/github.com/rupa/z]
 checkout = git clone 'https://github.com/rupa/z.git' 'z'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
