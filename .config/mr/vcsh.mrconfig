@@ -4,7 +4,9 @@ fixups = chmod -R go= ~/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout = vcsh clone git@github.com:tomhoover/git-vcsh.git git
-fixups = chmod -R go= ~/.config
+fixups =
+    chmod -R go= ~/.config
+    chmod -R go= ~/.gitignore.d
 
 [$HOME/.config/vcsh/repo.d/mr.git]
 checkout = vcsh clone git@github.com:tomhoover/mr-vcsh.git mr
