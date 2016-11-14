@@ -1,14 +1,3 @@
-[.gnupg]
-checkout =
-	git clone 'manuel:git/gnupg.git' '.gnupg'
-	cd "$MR_REPO"
-	git remote add drobo drobo:/mnt/DroboFS/Shares/git/gnupg.git
-	git remote add all manuel:git/gnupg.git
-	git remote set-url --add --push all drobo:/mnt/DroboFS/Shares/git/gnupg.git
-	git remote set-url --add --push all manuel:git/gnupg.git
-fixups = chmod -R go= ~/.gnupg
-skip = ! mylaptop
-
 [$HOME/.config/vcsh/repo.d/homebrew.git]
 checkout = vcsh clone git@github.com:tomhoover/homebrew-vcsh.git homebrew
 fixups = chmod -R go= ~/.config
