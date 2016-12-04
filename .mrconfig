@@ -55,9 +55,9 @@ include = cat ~/.config/mr/vcsh.mrconfig || true
 
 [.gnupg]
 checkout =
-    git clone 'manuel:git/gnupg.git' '.gnupg'
+    git clone 'manuel.local:git/gnupg.git' '.gnupg'
     cd "$MR_REPO"
-    git remote add drobo drobo:/mnt/DroboFS/Shares/git/gnupg.git
+    git remote add drobo drobo.local:/mnt/DroboFS/Shares/git/gnupg.git
 skip = ! mylaptop
 push = git push origin; git push drobo
 fixups = chmod -R go= ~/.gnupg
