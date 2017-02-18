@@ -1,19 +1,19 @@
 [$HOME/.config/vcsh/repo.d/dotfiles.git]
-checkout = vcsh clone git@github.com:tomhoover/dotfiles-vcsh.git dotfiles
+checkout = vcsh clone https://github.com/tomhoover/dotfiles-vcsh.git dotfiles
 fixups = chmod -R go= ~/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
-checkout = vcsh clone git@github.com:tomhoover/git-vcsh.git git
+checkout = vcsh clone https://github.com/tomhoover/git-vcsh.git git
 fixups =
     chmod -R go= ~/.config
     chmod -R go= ~/.gitignore.d
 
 [$HOME/.config/vcsh/repo.d/mr.git]
-checkout = vcsh clone git@github.com:tomhoover/mr-vcsh.git mr
+checkout = vcsh clone https://github.com/tomhoover/mr-vcsh.git mr
 fixups = chmod -R go= ~/.config
 
 [$HOME/.config/vcsh/repo.d/crontab.git]
-checkout = vcsh clone git@github.com:tomhoover/crontab-vcsh.git crontab
+checkout = vcsh clone https://github.com/tomhoover/crontab-vcsh.git crontab
 skip = ! mylaptop
 fixups =
 	chmod -R go= ~/.config

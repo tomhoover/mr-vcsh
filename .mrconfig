@@ -63,7 +63,7 @@ push = git push origin; git push drobo
 fixups = chmod -R go= ~/.gnupg
 
 [bin]
-checkout = git clone 'git@github.com:tomhoover/bin.git' 'bin'
+checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
 fixups = chmod 755 ~/bin
 
 [src/bootstrap]
@@ -71,22 +71,22 @@ checkout = git clone 'git@github.com:tomhoover/bootstrap.git' 'bootstrap'
 skip = ! mylaptop
 
 [src/dotfiles]
-checkout = git clone 'git@github.com:tomhoover/dotfiles.git' 'dotfiles'
+checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
 skip = ! mylaptop
 
 [src/tomhoover.github.io]
-checkout = git clone 'git@github.com:tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'
+checkout = git clone 'https://github.com/tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'
 skip = ! mylaptop
 
 [src/jekyll-tomhoover]
 checkout =
-	git clone 'git@github.com:tomhoover/jekyll-tomhoover.git' 'jekyll-tomhoover'
+	git clone 'https://github.com/tomhoover/jekyll-tomhoover.git' 'jekyll-tomhoover'
 	cd "$MR_REPO"
-	git remote add upstream git://github.com/mmistakes/so-simple-theme.git
+	git remote add upstream https://github.com/mmistakes/so-simple-theme.git
 skip = ! mylaptop
 
 [src/tomhoover-hugo]
-checkout = git clone 'git@github.com:tomhoover/tomhoover-hugo.git' 'tomhoover-hugo'
+checkout = git clone 'https://github.com/tomhoover/tomhoover-hugo.git' 'tomhoover-hugo'
 skip = ! mylaptop
 
 ### read-only repos

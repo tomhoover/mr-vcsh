@@ -1,5 +1,5 @@
 [$HOME/.config/vcsh/repo.d/apt.git]
-checkout = vcsh clone git@github.com:tomhoover/apt-vcsh.git apt
+checkout = vcsh clone https://github.com/tomhoover/apt-vcsh.git apt
 fixups = chmod -R go= ~/.config
 
 # read-only repos

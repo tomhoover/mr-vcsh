@@ -1,5 +1,5 @@
 [$HOME/.config/vcsh/repo.d/homebrew.git]
-checkout = vcsh clone git@github.com:tomhoover/homebrew-vcsh.git homebrew
+checkout = vcsh clone https://github.com/tomhoover/homebrew-vcsh.git homebrew
 fixups = chmod -R go= ~/.config
 
 [src/Fairmount]
@@ -10,9 +10,9 @@ checkout =
 
 [src/Check-RAID]
 checkout =
-	git clone 'git@github.com:tomhoover/Check-RAID.git' 'Check-RAID'
+	git clone 'https://github.com/tomhoover/Check-RAID.git' 'Check-RAID'
 	cd "$MR_REPO"
-	git remote add upstream git@github.com:Arko/Check-RAID.git
+	git remote add upstream https://github.com/Arko/Check-RAID.git
 fixups =
 	chmod +x "$MR_REPO/check-raid" || true
 #	sudo ln -sf "$MR_REPO/check-raid" /etc/periodic/daily/410.status-appleraid || true
