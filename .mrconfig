@@ -58,8 +58,9 @@ checkout =
     git clone 'manuel.local:git/gnupg.git' '.gnupg'
     cd "$MR_REPO"
     git remote add drobo drobo.local:/mnt/DroboFS/Shares/git/gnupg.git
+    git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
-push = git push origin; git push drobo
+push = git push origin; git push drobo; git push ironkey 2>/dev/null || true
 fixups = chmod -R go= ~/.gnupg
 
 [bin]

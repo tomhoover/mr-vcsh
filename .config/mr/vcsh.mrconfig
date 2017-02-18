@@ -26,7 +26,8 @@ checkout =
     vcsh clone manuel.local:git/private-vcsh.git private
     cd "$MR_REPO"
     git remote add drobo drobo.local:/mnt/DroboFS/Shares/git/private-vcsh.git
+    git remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
 skip = ! mylaptop
-push = vcsh private push origin; vcsh private push drobo
+push = vcsh private push origin; vcsh private push drobo; vcsh private push ironkey 2>/dev/null || true
 fixups = chmod -R go= ~/.config
 
