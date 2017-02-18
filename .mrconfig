@@ -19,37 +19,31 @@ git_remotes = git remote -v
 # - mylaptop only succeeds if it's on my main development laptop, which
 #   gets lots of extra cruft
 lib =
-	hostname="$(hostname)"
-	whoami="$(whoami)"
-	anon() {
-		( GIT_CONFIG=$HOME/.git/config git config remote.origin.url || cat .git/remotes/origin ) | grep -q 'git://'
-	}
-	full() {
-		test "$whoami" = joey && ! anon
-	}
-	on() {
-		for host in $@; do
-			if [ "${host%@*}" != "${host#*@}" ]; then
-				if [ "$whoami" != "${host%@*}" ]; then
-					continue
-				fi
-				host="${host#*@}"
-			fi
-			if [ "$hostname" = "$host" ]; then
-				return 0
-			fi
-		done
-		return 1
-	}
-	mylaptop() {
-		on tom@ariel
-	}
-
-#include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
-include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
-include = cat ~/.config/mr/`hostname -s`.mrconfig 2>/dev/null || true
-include = cat ~/.config/mr/src.mrconfig || true
-include = cat ~/.config/mr/vcsh.mrconfig || true
+    hostname="$(hostname)"
+    whoami="$(whoami)"
+    anon() {
+        ( GIT_CONFIG=$HOME/.git/config git config remote.origin.url || cat .git/remotes/origin ) | grep -q 'git://'
+    }
+    full() {
+        test "$whoami" = joey && ! anon
+    }
+    on() {
+        for host in $@; do
+            if [ "${host%@*}" != "${host#*@}" ]; then
+                if [ "$whoami" != "${host%@*}" ]; then
+                    continue
+                fi
+                host="${host#*@}"
+            fi
+            if [ "$hostname" = "$host" ]; then
+                return 0
+            fi
+        done
+        return 1
+    }
+    mylaptop() {
+        on tom@ariel
+    }
 
 ### common repos
 
