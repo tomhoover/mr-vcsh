@@ -1,6 +1,5 @@
-[$HOME/.config/vcsh/repo.d/homebrew.git]
-checkout = vcsh clone https://github.com/tomhoover/homebrew-vcsh.git homebrew
-fixups = chmod -R go= ~/.config
+[$HOME/.homebrew-brewfile]
+checkout = git clone https://github.com/tomhoover/homebrew-brewfile.git .homebrew-brewfile
 
 [src/Check-RAID]
 checkout =
