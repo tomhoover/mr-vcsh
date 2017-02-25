@@ -1,6 +1,6 @@
 [DEFAULT]
 
-#jobs = 5
+jobs = 5
 git_gc = git gc "$@"
 git_dum = git diff --name-status upstream/master 2>/dev/null || true
 
