@@ -14,7 +14,6 @@ fixups = chmod -R go= ~/.config
 
 [$HOME/.config/vcsh/repo.d/crontab.git]
 checkout = vcsh clone https://github.com/tomhoover/crontab-vcsh.git crontab
-skip = ! mylaptop
 fixups =
 	chmod -R go= ~/.config
 	cd "$MR_REPO"
