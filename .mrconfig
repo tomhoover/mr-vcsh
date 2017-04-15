@@ -1,6 +1,6 @@
 [DEFAULT]
 
-jobs = 5
+#jobs = 5
 git_gc = git gc "$@"
 git_dum = git diff --name-status upstream/master 2>/dev/null || true
 
@@ -79,9 +79,9 @@ skip = ! mylaptop
 
 [src/jekyll-tomhoover]
 checkout =
-	git clone 'https://github.com/tomhoover/jekyll-tomhoover.git' 'jekyll-tomhoover'
-	cd "$MR_REPO"
-	git remote add upstream https://github.com/mmistakes/so-simple-theme.git
+    git clone 'https://github.com/tomhoover/jekyll-tomhoover.git' 'jekyll-tomhoover'
+    cd "$MR_REPO"
+    git remote add upstream https://github.com/mmistakes/so-simple-theme.git
 skip = ! mylaptop
 
 [src/tomhoover-hugo]
