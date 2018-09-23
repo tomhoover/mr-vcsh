@@ -1,3 +1,12 @@
+##### my Home Assistant config
+
+[src/home-assistant_config]
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
+fixups =
+    BASEDIR=$(basename "$MR_REPO")
+    mkdir -p "$HOME/src/HA"
+    ln -sf "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+
 ##### read-only repos
 
 [src/github.com/andrewjfreyer/monitor]
