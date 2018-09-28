@@ -2,10 +2,6 @@
 
 [src/home-assistant_config]
 checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
-fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -sf "$MR_REPO" "$HOME/src/HA/$BASEDIR"
 
 ##### read-only repos
 
@@ -14,51 +10,57 @@ checkout = git clone 'https://github.com/andrewjfreyer/monitor.git' 'monitor'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -s "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
 
 [src/github.com/skalavala/smarthome]
 checkout = git clone 'https://github.com/skalavala/smarthome.git' 'smarthome'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -s "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
 
 [src/github.com/arendst/Sonoff-Tasmota]
 checkout = git clone 'https://github.com/arendst/Sonoff-Tasmota.git' 'Sonoff-Tasmota'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -s "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
 
 [src/github.com/keatontaylor/custom_components]
 checkout = git clone 'https://github.com/keatontaylor/custom_components.git' 'custom_components'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -s "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
 
 [src/github.com/notoriousbdg/Home-AssistantConfig]
 checkout = git clone 'https://github.com/notoriousbdg/Home-AssistantConfig.git' 'Home-AssistantConfig'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -s "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
 
 [src/github.com/dale3h/homeassistant-config]
 checkout = git clone 'https://github.com/dale3h/homeassistant-config.git' 'homeassistant-config'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    BASEDIR=$(basename "$MR_REPO")
-    mkdir -p "$HOME/src/HA"
-    ln -s "$MR_REPO" "$HOME/src/HA/$BASEDIR"
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
