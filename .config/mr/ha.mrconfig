@@ -64,3 +64,13 @@ fixups =
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
     mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
     ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+
+[src/github.com/fronzbot/githass]
+checkout = git clone 'https://github.com/fronzbot/githass.git' 'githass'
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups =
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
