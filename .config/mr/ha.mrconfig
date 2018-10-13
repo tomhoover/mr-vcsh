@@ -1,3 +1,8 @@
+##### my Home Assistant config
+
+[src/home-assistant_config]
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
+
 ##### read-only repos
 
 [src/github.com/andrewjfreyer/monitor]
@@ -7,8 +12,8 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
 
 [src/github.com/skalavala/smarthome]
 checkout = git clone 'https://github.com/skalavala/smarthome.git' 'smarthome'
@@ -17,8 +22,8 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
 
 [src/github.com/arendst/Sonoff-Tasmota]
 checkout = git clone 'https://github.com/arendst/Sonoff-Tasmota.git' 'Sonoff-Tasmota'
@@ -27,8 +32,8 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
 
 [src/github.com/keatontaylor/custom_components]
 checkout = git clone 'https://github.com/keatontaylor/custom_components.git' 'custom_components'
@@ -37,8 +42,8 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
 
 [src/github.com/notoriousbdg/Home-AssistantConfig]
 checkout = git clone 'https://github.com/notoriousbdg/Home-AssistantConfig.git' 'Home-AssistantConfig'
@@ -47,8 +52,8 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
 
 [src/github.com/dale3h/homeassistant-config]
 checkout = git clone 'https://github.com/dale3h/homeassistant-config.git' 'homeassistant-config'
@@ -57,8 +62,8 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
 
 [src/github.com/fronzbot/githass]
 checkout = git clone 'https://github.com/fronzbot/githass.git' 'githass'
@@ -67,5 +72,5 @@ push = :
 fixups =
     REPO_NAME=$(basename "$MR_REPO")
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
-    mkdir -p "$HOME/src/home-assistant_config/examples/@$USER_NAME"
-    ln -sf "$MR_REPO" "$HOME/src/home-assistant_config/examples/@$USER_NAME"
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
