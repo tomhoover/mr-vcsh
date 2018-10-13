@@ -1,8 +1,3 @@
-##### my Home Assistant config
-
-[src/home-assistant_config]
-checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
-
 ##### read-only repos
 
 [src/github.com/andrewjfreyer/monitor]

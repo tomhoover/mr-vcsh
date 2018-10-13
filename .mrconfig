@@ -88,6 +88,11 @@ skip = ! mylaptop
 checkout = git clone 'https://github.com/tomhoover/tomhoover-hugo.git' 'tomhoover-hugo'
 skip = ! mylaptop
 
+##### my Home Assistant config
+
+[src/home-assistant_config]
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
+
 ### read-only repos
 
 [.oh-my-zsh]
