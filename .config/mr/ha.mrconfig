@@ -85,3 +85,13 @@ fixups =
     USER_NAME=$(basename "$(dirname "$MR_REPO")")
     mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
     ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
+
+[src/github.com/mf-social/Home-Assistant]
+checkout = git clone 'https://github.com/mf-social/Home-Assistant.git' 'Home-Assistant'
+skip = unraid || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups =
+    REPO_NAME=$(basename "$MR_REPO")
+    USER_NAME=$(basename "$(dirname "$MR_REPO")")
+    mkdir -p "$HOME/src/home-assistant_examples/@$USER_NAME"
+    ln -sf "$MR_REPO" "$HOME/src/home-assistant_examples/@$USER_NAME"
