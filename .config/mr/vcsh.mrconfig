@@ -22,9 +22,9 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
-    vcsh clone unraid.local:/mnt/user/git/private-vcsh.git private
+    vcsh clone unraid.local:git/private-vcsh.git private
     cd "$MR_REPO"
-    git remote add drobo drobo.local:/mnt/DroboFS/Shares/private/git/private-vcsh.git
+    git remote add drobo drobo.local:git/private-vcsh.git
     git remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
 skip = ! mylaptop
 push = vcsh private push origin; vcsh private push drobo; vcsh private push ironkey 2>/dev/null || true

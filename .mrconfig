@@ -52,9 +52,9 @@ lib =
 
 [.gnupg]
 checkout =
-    git clone 'unraid.local:/mnt/user/git/gnupg.git' '.gnupg'
+    git clone 'unraid.local:git/gnupg.git' '.gnupg'
     cd "$MR_REPO"
-    git remote add drobo drobo.local:/mnt/DroboFS/Shares/private/git/gnupg.git
+    git remote add drobo drobo.local:git/gnupg.git
     git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
 push = git push origin; git push drobo; git push ironkey 2>/dev/null || true
@@ -66,9 +66,9 @@ fixups = chmod 755 ~/bin
 
 [src/zLinux-bin]
 checkout =
-    git clone 'unraid.local:/mnt/user/git/zLinux-bin.git' 'zLinux-bin'
+    git clone 'unraid.local:git/zLinux-bin.git' 'zLinux-bin'
     cd "$MR_REPO"
-    git remote add drobo drobo.local:/mnt/DroboFS/Shares/private/git/zLinux-bin.git
+    git remote add drobo drobo.local:git/zLinux-bin.git
 skip = ! mylaptop
 push = git push origin; git push drobo
 
