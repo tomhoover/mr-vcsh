@@ -1,0 +1,4 @@
+[/opt]
+checkout = git clone 'https://github.com/tomhoover/docker-compose.git' 'opt'
+skip = ! unraid
+fixups = chmod 755 /opt
