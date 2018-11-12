@@ -1,4 +1,11 @@
-[/opt]
-checkout = git clone 'https://github.com/tomhoover/docker-compose.git' 'opt'
+[/mnt/user/appdata/hass]
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
 skip = ! unraid
-fixups = chmod 755 /opt
+
+[/mnt/user/appdata/letsencrypt]
+checkout = git clone 'https://github.com/tomhoover/letsencrypt_config.git' 'letsencrypt'
+skip = ! unraid
+
+[/mnt/user/appdata/docker-compose]
+checkout = git clone 'https://github.com/tomhoover/docker-compose.git' 'docker-compose'
+skip = ! unraid
