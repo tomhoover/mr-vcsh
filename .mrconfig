@@ -44,7 +44,10 @@ lib =
     mylaptop() {
         on tom@ariel
     }
-    unraid() {
+    root-bethel() {
+        on root@bethel
+    }
+    root-unraid() {
         on root@unraid
     }
 
