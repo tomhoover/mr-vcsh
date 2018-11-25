@@ -1,11 +1,11 @@
 [/mnt/user/appdata/hass]
 checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
-skip = ! unraid
+skip = ! root-unraid
 
 [/mnt/user/appdata/letsencrypt]
 checkout = git clone 'https://github.com/tomhoover/letsencrypt_config.git' 'letsencrypt'
-skip = ! unraid
+skip = ! root-unraid
 
-[/mnt/user/appdata/docker-compose]
-checkout = git clone 'https://github.com/tomhoover/docker-compose.git' 'docker-compose'
-skip = ! unraid
+[/mnt/user/appdata/docker-compose-unraid]
+checkout = git clone 'https://github.com/tomhoover/docker-compose-unraid.git' 'docker-compose-unraid'
+skip = ! root-unraid
