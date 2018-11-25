@@ -1,3 +1,11 @@
+[/opt/appdata/hass]
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
+skip = ! tom_bethel
+
+[/opt/appdata/docker-compose-bethel]
+checkout = git clone 'https://github.com/tomhoover/docker-compose-bethel.git' 'docker-compose-bethel'
+skip = ! tom_bethel
+
 # read-only repos
 
 [src/github.com/DrWhax/truecrypt-archive]
