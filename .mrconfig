@@ -50,6 +50,9 @@ lib =
     root_bethel() {
         on root@bethel
     }
+    root_gabriel() {
+        on root@gabriel
+    }
     root_unraid() {
         on root@unraid
     }
