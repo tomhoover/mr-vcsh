@@ -18,6 +18,7 @@ fixups =
 	chmod -R go= ~/.config
 	cd "$MR_REPO"
 	[ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && sudo cp .config/crontab/`hostname -s`.crontab /etc/crontab || true
+	[ -f .config/crontab/`hostname -s`-*-crond ] && sudo cp .config/crontab/`hostname -s`-*-crond /etc/cron.d || true
 	[ -f .config/crontab/`hostname -s`.`whoami`.crontab ] && crontab .config/crontab/`hostname -s`.`whoami`.crontab || true
 
 [$HOME/.config/vcsh/repo.d/private.git]
