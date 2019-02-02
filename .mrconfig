@@ -44,17 +44,8 @@ lib =
     mylaptop() {
         on tom@ariel
     }
-    tom_bethel() {
-        on tom@bethel
-    }
-    root_bethel() {
-        on root@bethel
-    }
-    root_gabriel() {
-        on root@gabriel
-    }
-    root_unraid() {
-        on root@unraid
+    root() {
+        test "$whoami" = root
     }
 
 ### common repos
