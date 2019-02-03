@@ -14,10 +14,11 @@ fixups = chmod -R go= ~/.config
 
 [$HOME/.config/vcsh/repo.d/crontab.git]
 checkout = vcsh clone https://github.com/tomhoover/crontab-vcsh.git crontab
+skip = root
 fixups =
     chmod -R go= ~/.config
     cd
-    #[ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && sudo cp .config/crontab/`hostname -s`.crontab /etc/crontab || true
+    [ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`.crontab /etc/crontab`tput sgr0`'" || true
     [ -f .config/crontab/`hostname -s`-crond ] && [ ! -f /etc/cron.d/`hostname -s`-crond ] && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`-crond /etc/cron.d`tput sgr0`'" || true
     [ .config/crontab/`hostname -s`-crond -nt /etc/cron.d/`hostname -s`-crond ]            && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`-crond /etc/cron.d`tput sgr0`'" || true
     [ -f .config/crontab/`hostname -s`.`whoami`.crontab ] && crontab .config/crontab/`hostname -s`.`whoami`.crontab || true
