@@ -1,20 +1,10 @@
-[$HOME/.config/vcsh/repo.d/dotfiles.git]
-checkout = vcsh clone https://github.com/tomhoover/dotfiles-vcsh.git dotfiles
-fixups = chmod -R go= ~/.config
-
-[$HOME/.config/vcsh/repo.d/git.git]
-checkout = vcsh clone https://github.com/tomhoover/git-vcsh.git git
-fixups =
-    chmod -R go= ~/.config
-    chmod -R go= ~/.gitignore.d
-
-[$HOME/.config/vcsh/repo.d/mr.git]
-checkout = vcsh clone https://github.com/tomhoover/mr-vcsh.git mr
-fixups = chmod -R go= ~/.config
-
 [$HOME/.config/vcsh/repo.d/crontab.git]
-checkout = vcsh clone https://github.com/tomhoover/crontab-vcsh.git crontab
+checkout =
+    vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/crontab-vcsh.git
 skip = root
+push = vcsh crontab push origin; vcsh crontab push gitolite || true
 fixups =
     chmod -R go= ~/.config
     cd
@@ -23,13 +13,40 @@ fixups =
     [ .config/crontab/`hostname -s`-crond -nt /etc/cron.d/`hostname -s`-crond ]            && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`-crond /etc/cron.d`tput sgr0`'" || true
     [ -f .config/crontab/`hostname -s`.`whoami`.crontab ] && crontab .config/crontab/`hostname -s`.`whoami`.crontab || true
 
+[$HOME/.config/vcsh/repo.d/dotfiles.git]
+checkout =
+    vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/dotfiles-vcsh.git
+push = vcsh dotfiles push origin; vcsh dotfiles push gitolite || true
+fixups = chmod -R go= ~/.config
+
+[$HOME/.config/vcsh/repo.d/git.git]
+checkout =
+    vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/git-vcsh.git
+push = vcsh git push origin; vcsh git push gitolite || true
+fixups =
+    chmod -R go= ~/.config
+    chmod -R go= ~/.gitignore.d
+
+[$HOME/.config/vcsh/repo.d/mr.git]
+checkout =
+    vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/mr-vcsh.git
+push = vcsh mr push origin; vcsh mr push gitolite || true
+fixups = chmod -R go= ~/.config
+
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
-    vcsh clone gabriel.local:git/private-vcsh.git private
+    vcsh clone 'git@git.local:private-vcsh.git' 'private'
     cd "$MR_REPO"
     git remote add bethel bethel.local:git/private-vcsh.git
     git remote add drobo drobo.local:git/private-vcsh.git
+    git remote add gabriel gabriel.local:git/private-vcsh.git
     git remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
 skip = ! mylaptop
-push = vcsh private push origin; vcsh private push bethel; vcsh private push drobo; vcsh private push ironkey 2>/dev/null || true
+push = vcsh private push origin; vcsh private push bethel; vcsh private push drobo; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
 fixups = chmod -R go= ~/.config

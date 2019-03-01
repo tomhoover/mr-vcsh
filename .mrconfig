@@ -52,27 +52,33 @@ lib =
 
 [.gnupg]
 checkout =
-    git clone 'gabriel.local:git/gnupg.git' '.gnupg'
+    git clone 'git@git.local:gnupg.git' '.gnupg'
     cd "$MR_REPO"
     git remote add bethel bethel.local:git/gnupg.git
     git remote add drobo drobo.local:git/gnupg.git
+    git remote add gabriel gabriel.local:git/gnupg.git
     git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
-push = git push origin; git push bethel; git push drobo; git push ironkey 2>/dev/null || true
+push = git push origin; git push bethel; git push drobo; git push gabriel; git push ironkey 2>/dev/null || true
 fixups = chmod -R go= ~/.gnupg
 
 [bin]
-checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
+checkout = 
+    git clone 'https://github.com/tomhoover/bin.git' 'bin'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/bin.git
+push = git push origin; git push gitolite || true
 fixups = chmod 755 ~/bin
 
 [src/zLinux-bin]
 checkout =
-    git clone 'gabriel.local:git/zLinux-bin.git' 'zLinux-bin'
+    git clone 'git@git.local:zLinux-bin.git' 'zLinux-bin'
     cd "$MR_REPO"
     git remote add bethel bethel.local:git/zLinux-bin.git
     git remote add drobo drobo.local:git/zLinux-bin.git
+    git remote add gabriel gabriel.local:git/zLinux-bin.git
 skip = ! mylaptop
-push = git push origin; git push bethel; git push drobo
+push = git push origin; git push bethel; git push drobo; git push gabriel || true
 
 [src/dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
