@@ -1,0 +1,14 @@
+*
+!/.config
+!/.config/mr
+!/.config/mr/bethel.mrconfig
+!/.config/mr/Darwin.mrconfig
+!/.config/mr/gabriel.mrconfig
+!/.config/mr/ha.mrconfig
+!/.config/mr/Linux.mrconfig
+!/.config/mr/src.mrconfig
+!/.config/mr/vcsh.mrconfig
+!/.gitignore.d
+!/.gitignore.d/mr
+!/.mrconfig
+!/.mrtrust
