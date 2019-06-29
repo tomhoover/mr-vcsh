@@ -118,6 +118,6 @@ fixups = chmod 755 ~/src
 
 include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
 include = cat ~/.config/mr/`hostname -s`.mrconfig 2>/dev/null || true
-include = cat ~/.config/mr/ha.mrconfig || true
+include = cat ~/.config/mr/hass.mrconfig || true
 include = cat ~/.config/mr/src.mrconfig || true
 include = cat ~/.config/mr/vcsh.mrconfig || true
