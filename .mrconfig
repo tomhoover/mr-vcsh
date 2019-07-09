@@ -81,6 +81,12 @@ fixups =
     [ "$MR_REPO/simplesnap" -nt /usr/local/sbin/simplesnap ]         && echo "" && echo "be sure to '`tput setaf 1`cd $MR_REPO && sudo make install`tput sgr0`'" || true
     [ "$MR_REPO/simplesnapwrap" -nt /usr/local/sbin/simplesnapwrap ] && echo "" && echo "be sure to '`tput setaf 1`cd $MR_REPO && sudo make install`tput sgr0`'" || true
 
+[src/git.spwhitton.name/dotfiles]
+checkout = git clone 'git://spwhitton.name/dotfiles.git' 'dotfiles'
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups = ln -sf "$MR_REPO/archive/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
+
 [src/zLinux-bin]
 checkout =
     git clone 'git@git.local:zLinux-bin.git' 'zLinux-bin'
