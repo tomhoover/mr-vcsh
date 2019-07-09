@@ -50,6 +50,14 @@ lib =
 
 ### common repos
 
+[.dotfiles]
+checkout =
+    git clone 'https://github.com/tomhoover/dotfiles.git' '.dotfiles'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/dotfiles.git
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = git push origin; git push gitolite || true
+
 [.gnupg]
 checkout =
     git clone 'git@git.local:gnupg.git' '.gnupg'
@@ -61,6 +69,14 @@ checkout =
 skip = ! mylaptop
 push = git push origin; git push bethel; git push drobo; git push gabriel; git push ironkey 2>/dev/null || true
 fixups = chmod -R go= ~/.gnupg
+
+[.homebrew-brewfile]
+checkout =
+    git clone 'https://github.com/tomhoover/homebrew-brewfile.git' '.homebrew-brewfile'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:pub/homebrew-brewfile.git
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = git push origin; git push gitolite || true
 
 [bin]
 checkout = 
@@ -106,7 +122,7 @@ checkout =
     git remote add bethel bethel.local:git/zLinux-bin.git
     git remote add drobo drobo.local:git/zLinux-bin.git
     git remote add gabriel gabriel.local:git/zLinux-bin.git
-skip = ! mylaptop
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = git push origin; git push bethel; git push drobo; git push gabriel || true
 
 [src/dotfiles]
@@ -147,6 +163,6 @@ fixups = chmod 755 ~/src
 
 include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
 include = cat ~/.config/mr/`hostname -s`.mrconfig 2>/dev/null || true
-include = cat ~/.config/mr/hass.mrconfig || true
+#include = cat ~/.config/mr/hass.mrconfig || true
 include = cat ~/.config/mr/src.mrconfig || true
 include = cat ~/.config/mr/vcsh.mrconfig || true
