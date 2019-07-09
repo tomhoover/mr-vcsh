@@ -70,6 +70,17 @@ checkout =
 push = git push origin; git push gitolite || true
 fixups = chmod 755 ~/bin
 
+[src/simplesnap]
+checkout =
+    git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
+    cd "$MR_REPO"
+    git remote add upstream https://github.com/jgoerzen/simplesnap.git
+skip = root
+fixups =
+    [ ! -f /usr/local/sbin/simplesnap -o ! -f /usr/local/sbin/simplesnapwrap ] && echo "" && echo "`tput setaf 1`be sure to 'cd $MR_REPO && sudo make install'`tput sgr0`" || true
+    [ "$MR_REPO/simplesnap" -nt /usr/local/sbin/simplesnap ]         && echo "" && echo "be sure to '`tput setaf 1`cd $MR_REPO && sudo make install`tput sgr0`'" || true
+    [ "$MR_REPO/simplesnapwrap" -nt /usr/local/sbin/simplesnapwrap ] && echo "" && echo "be sure to '`tput setaf 1`cd $MR_REPO && sudo make install`tput sgr0`'" || true
+
 [src/zLinux-bin]
 checkout =
     git clone 'git@git.local:zLinux-bin.git' 'zLinux-bin'
