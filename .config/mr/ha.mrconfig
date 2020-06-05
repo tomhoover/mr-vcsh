@@ -2,7 +2,7 @@
 checkout =
     git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:pub/home-assistant_config.git
+    git remote add gitolite git@git.local:tom/home-assistant_config.git
 skip = root
 push = git push origin; git push gitolite || true
 
@@ -10,7 +10,7 @@ push = git push origin; git push gitolite || true
 checkout =
     git clone 'https://github.com/tomhoover/docker-compose-ha.git' 'docker-compose-ha'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:pub/docker-compose-ha.git
+    git remote add gitolite git@git.local:tom/docker-compose-ha.git
 skip = root
 push = git push origin; git push gitolite || true
 

@@ -4,7 +4,7 @@
 checkout =
     git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:pub/home-assistant_config.git
+    git remote add gitolite git@git.local:tom/home-assistant_config.git
 skip = ! mylaptop
 push = git push origin; git push gitolite || true
 
