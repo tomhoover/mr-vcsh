@@ -161,8 +161,9 @@ fixups = chmod 755 ~/src
 
 ### included repos
 
-include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
-include = cat ~/.config/mr/`hostname -s`.mrconfig 2>/dev/null || true
-#include = cat ~/.config/mr/hass.mrconfig || true
+#include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
+include = cat ~/.config/mr/`uname`.mrconfig || true
+include = cat ~/.config/mr/`hostname -s`.mrconfig || true
+include = cat ~/.config/mr/home_automation.mrconfig || true
 include = cat ~/.config/mr/src.mrconfig || true
 include = cat ~/.config/mr/vcsh.mrconfig || true
