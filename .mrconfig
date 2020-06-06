@@ -88,9 +88,11 @@ push = git push origin; git push gitolite || true
 fixups = chmod 755 ~/bin
 
 [$HOME/src/git.spwhitton.name/dotfiles]
-checkout = git clone 'git://spwhitton.name/dotfiles.git' 'dotfiles'
+checkout =
+    git clone 'git@git.local:tom/spwhitton_dotfiles.git' 'dotfiles'
+    cd "$MR_REPO"
+    git remote add upstream git://spwhitton.name/dotfiles.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
-push = :
 fixups = ln -sf "$MR_REPO/archive/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
 
 [$HOME/src/zLinux-bin]
