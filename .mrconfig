@@ -42,7 +42,10 @@ lib =
         return 1
     }
     mylaptop() {
-        on tom@ariel
+        on tom@ariel || on tom@theophilus
+    }
+    hass() {
+        mylaptop || on tom@ha
     }
     root() {
         test "$whoami" = root
@@ -50,114 +53,93 @@ lib =
 
 ### common repos
 
-[.dotfiles]
+[$HOME/.ansible]
+checkout = 
+    git clone 'https://github.com/tomhoover/ansible.git' '.ansible'
+    cd "$MR_REPO"
+    git remote add gitolite git@git.local:tom/ansible.git
+skip = ! mylaptop
+push = git push origin; git push gitolite || true
+
+[$HOME/.dotfiles]
 checkout =
     git clone 'https://github.com/tomhoover/dotfiles.git' '.dotfiles'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:pub/dotfiles.git
+    git remote add gitolite git@git.local:tom/dotfiles.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = git push origin; git push gitolite || true
 
-[.gnupg]
+[$HOME/.gnupg]
 checkout =
     git clone 'git@git.local:gnupg.git' '.gnupg'
     cd "$MR_REPO"
-    git remote add bethel bethel.local:git/gnupg.git
-    git remote add drobo drobo.local:git/gnupg.git
     git remote add gabriel gabriel.local:git/gnupg.git
     git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
-push = git push origin; git push bethel; git push drobo; git push gabriel; git push ironkey 2>/dev/null || true
+push = git push origin; git push gabriel; git push ironkey 2>/dev/null || true
 fixups = chmod -R go= ~/.gnupg
 
-[.homebrew-brewfile]
-checkout =
-    git clone 'https://github.com/tomhoover/homebrew-brewfile.git' '.homebrew-brewfile'
-    cd "$MR_REPO"
-    git remote add gitolite git@git.local:pub/homebrew-brewfile.git
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
-push = git push origin; git push gitolite || true
-
-[bin]
+[$HOME/bin]
 checkout = 
     git clone 'https://github.com/tomhoover/bin.git' 'bin'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:pub/bin.git
+    git remote add gitolite git@git.local:tom/bin.git
 push = git push origin; git push gitolite || true
 fixups = chmod 755 ~/bin
 
-[src/simplesnap]
-checkout =
-    git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
-    cd "$MR_REPO"
-    git remote add upstream https://github.com/jgoerzen/simplesnap.git
-skip = root
-fixups =
-    [ ! -f /usr/local/sbin/simplesnap -o ! -f /usr/local/sbin/simplesnapwrap ] && echo "" && echo "`tput setaf 1`be sure to 'cd $MR_REPO && sudo make install'`tput sgr0`" || true
-    [ "$MR_REPO/simplesnap" -nt /usr/local/sbin/simplesnap ]         && echo "" && echo "be sure to '`tput setaf 1`cd $MR_REPO && sudo make install`tput sgr0`'" || true
-    [ "$MR_REPO/simplesnapwrap" -nt /usr/local/sbin/simplesnapwrap ] && echo "" && echo "be sure to '`tput setaf 1`cd $MR_REPO && sudo make install`tput sgr0`'" || true
-
-[src/git.spwhitton.name/dotfiles]
+[$HOME/src/git.spwhitton.name/dotfiles]
 checkout = git clone 'git://spwhitton.name/dotfiles.git' 'dotfiles'
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups = ln -sf "$MR_REPO/archive/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
 
-[src/github.com/stevenblack/hosts]
-checkout = git clone 'https://github.com/StevenBlack/hosts.git' 'hosts'
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
-push = :
-update = git pull --rebase --autostash
-
-[src/github.com/zfsnap/zfsnap]
-checkout = git clone 'https://github.com/zfsnap/zfsnap.git' 'zfsnap'
-skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = :
-fixups = ln -sf "$MR_REPO/sbin/zfsnap.sh" "$HOME/bin/zfsnap.sh"
-
-[src/zLinux-bin]
+[$HOME/src/zLinux-bin]
 checkout =
     git clone 'git@git.local:zLinux-bin.git' 'zLinux-bin'
     cd "$MR_REPO"
-    git remote add bethel bethel.local:git/zLinux-bin.git
-    git remote add drobo drobo.local:git/zLinux-bin.git
     git remote add gabriel gabriel.local:git/zLinux-bin.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
-push = git push origin; git push bethel; git push drobo; git push gabriel || true
+push = git push origin; git push gabriel || true
 
-[src/dotfiles]
+[$HOME/src/dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
 skip = ! mylaptop
 
-[src/tomhoover.github.io]
+[$HOME/src/tomhoover.github.io]
 checkout = git clone 'https://github.com/tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'
 skip = ! mylaptop
 
-[src/jekyll-tomhoover]
+[$HOME/src/jekyll-tomhoover]
 checkout =
     git clone 'https://github.com/tomhoover/jekyll-tomhoover.git' 'jekyll-tomhoover'
     cd "$MR_REPO"
     git remote add upstream https://github.com/mmistakes/so-simple-theme.git
 skip = ! mylaptop
 
-[src/tomhoover-hugo]
-checkout = git clone 'https://github.com/tomhoover/tomhoover-hugo.git' 'tomhoover-hugo'
-skip = ! mylaptop
+##### [$HOME/src/tomhoover-hugo]
+##### checkout = git clone 'https://github.com/tomhoover/tomhoover-hugo.git' 'tomhoover-hugo'
+##### skip = ! mylaptop
 
 ### read-only repos
 
-[.oh-my-zsh]
+[$HOME/.oh-my-zsh]
 checkout = git clone 'https://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 update = git pull --rebase --autostash
 fixups = chmod 755 ~/.oh-my-zsh
 
-[src/github.com/nojhan/liquidprompt]
+[$HOME/src/github.com/nojhan/liquidprompt]
 checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups = chmod 755 ~/src
+
+[$HOME/.tmux/plugins/tpm]
+checkout = git clone 'https://github.com/tmux-plugins/tpm' 'tpm'
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups = chmod 755 ~/.tmux
 
 ### included repos
 
