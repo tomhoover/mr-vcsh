@@ -93,7 +93,9 @@ checkout =
     cd "$MR_REPO"
     git remote add upstream git://spwhitton.name/dotfiles.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
-fixups = ln -sf "$MR_REPO/archive/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
+fixups =
+    chmod 755 ~/src
+    ln -sf "$MR_REPO/archive/bin/clean-github-pr.py" "$HOME/bin/clean-github-pr.py"
 
 [$HOME/src/zLinux-bin]
 checkout =
@@ -102,10 +104,12 @@ checkout =
     git remote add gabriel gabriel.local:git/zLinux-bin.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = git push origin; git push gabriel || true
+fixups = chmod 755 ~/src
 
 [$HOME/src/dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
 skip = ! mylaptop
+fixups = chmod 755 ~/src
 
 [$HOME/src/tomhoover.github.io]
 checkout = git clone 'https://github.com/tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'
@@ -117,10 +121,12 @@ checkout =
     cd "$MR_REPO"
     git remote add upstream https://github.com/mmistakes/so-simple-theme.git
 skip = ! mylaptop
+fixups = chmod 755 ~/src
 
 ##### [$HOME/src/tomhoover-hugo]
 ##### checkout = git clone 'https://github.com/tomhoover/tomhoover-hugo.git' 'tomhoover-hugo'
 ##### skip = ! mylaptop
+##### fixups = chmod 755 ~/src
 
 ### read-only repos
 
@@ -135,7 +141,19 @@ fixups = chmod 755 ~/.oh-my-zsh
 checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
-fixups = chmod 755 ~/src
+fixups =
+    chmod 755 ~/src
+    ln -sf "$HOME/src/github.com" "$HOME/src/gh"
+
+[$HOME/src/github.com/so-fancy/diff-so-fancy]
+checkout = git clone 'https://github.com/so-fancy/diff-so-fancy.git' 'diff-so-fancy'
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups =
+    chmod 755 ~/src
+    ln -sf "$HOME/src/github.com" "$HOME/src/gh"
+    ln -sf "$MR_REPO/third_party/diff-highlight/diff-highlight" "$HOME/bin/diff-highlight"
+    ln -sf "$MR_REPO/diff-so-fancy" "$HOME/bin/diff-so-fancy"
 
 [$HOME/.tmux/plugins/tpm]
 checkout = git clone 'https://github.com/tmux-plugins/tpm' 'tpm'
