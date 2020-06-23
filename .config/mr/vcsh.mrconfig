@@ -2,7 +2,7 @@
 checkout =
     vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:tom/crontab-vcsh.git
+    vcsh crontab remote add gitolite git@git.local:tom/crontab-vcsh.git
 skip = root
 push = vcsh crontab push origin; vcsh crontab push gitolite || true
 fixups =
@@ -17,7 +17,7 @@ fixups =
 checkout =
     vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:tom/dotfiles-vcsh.git
+    vcsh dotfiles remote add gitolite git@git.local:tom/dotfiles-vcsh.git
 push = vcsh dotfiles push origin; vcsh dotfiles push gitolite || true
 fixups = chmod -R go= ~/.config
 
@@ -25,7 +25,7 @@ fixups = chmod -R go= ~/.config
 checkout =
     vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:tom/git-vcsh.git
+    vcsh git remote add gitolite git@git.local:tom/git-vcsh.git
 push = vcsh git push origin; vcsh git push gitolite || true
 fixups =
     chmod -R go= ~/.config
@@ -35,7 +35,7 @@ fixups =
 checkout =
     vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:tom/mr-vcsh.git
+    vcsh mr remote add gitolite git@git.local:tom/mr-vcsh.git
 push = vcsh mr push origin; vcsh mr push gitolite || true
 fixups = chmod -R go= ~/.config
 
@@ -45,8 +45,8 @@ checkout =
     cd "$MR_REPO"
     # git remote add bethel bethel.local:git/private-vcsh.git
     # git remote add drobo drobo.local:git/private-vcsh.git
-    git remote add gabriel gabriel.local:git/private-vcsh.git
-    git remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
+    vcsh private remote add gabriel gabriel.local:git/private-vcsh.git
+    vcsh private remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
 skip = ! mylaptop
 # push = vcsh private push origin; vcsh private push bethel; vcsh private push drobo; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
 push = vcsh private push origin; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
