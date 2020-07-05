@@ -163,7 +163,7 @@ fixups = chmod 755 ~/.tmux
 
 ### included repos
 
-#include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
+# include = cat ~/.config/mr/`uname`.mrconfig 2>/dev/null || true
 include = cat ~/.config/mr/`uname`.mrconfig || true
 include = cat ~/.config/mr/`hostname -s`.mrconfig || true
 include = cat ~/.config/mr/home_automation.mrconfig || true
