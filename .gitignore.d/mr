@@ -1,14 +1,7 @@
 *
 !/.config
 !/.config/mr
-!/.config/mr/Darwin.mrconfig
-!/.config/mr/Linux.mrconfig
-!/.config/mr/ariel.mrconfig
-!/.config/mr/gabriel.mrconfig
-!/.config/mr/ha.mrconfig
-!/.config/mr/hass.mrconfig
-!/.config/mr/src.mrconfig
-!/.config/mr/vcsh.mrconfig
+!/.config/mr/*
 !/.gitignore.d
 !/.gitignore.d/mr
 !/.mrconfig
