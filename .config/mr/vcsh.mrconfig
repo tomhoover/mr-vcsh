@@ -50,4 +50,6 @@ checkout =
 skip = ! mylaptop
 # push = vcsh private push origin; vcsh private push bethel; vcsh private push drobo; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
 push = vcsh private push origin; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
-fixups = chmod -R go= ~/.config
+fixups =
+    chmod -R go= ~/.config
+    chmod 600 ~/.ssh/*_rsa
