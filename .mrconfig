@@ -105,12 +105,16 @@ checkout =
     git remote add gabriel gabriel.local:git/zLinux-bin.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = git push origin; git push gabriel || true
-fixups = chmod 755 ~/src
+fixups =
+    chmod 755 ~/src
+    ln -sf "$HOME/src/github.com" "$HOME/src/gh"
 
 [$HOME/src/dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
 skip = ! mylaptop
-fixups = chmod 755 ~/src
+fixups =
+    chmod 755 ~/src
+    ln -sf "$HOME/src/github.com" "$HOME/src/gh"
 
 [$HOME/src/tomhoover.github.io]
 checkout = git clone 'https://github.com/tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'
@@ -130,6 +134,20 @@ fixups = chmod 755 ~/src
 ##### fixups = chmod 755 ~/src
 
 ### read-only repos
+
+[$HOME/src/github.com/zfsnap/zfsnap]
+checkout = git clone 'https://github.com/zfsnap/zfsnap.git' 'zfsnap'
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups =
+    ln -sf "$MR_REPO/sbin/zfsnap.sh" /usr/local/sbin/zfsnap.sh
+    ln -sf "$MR_REPO/man/man8/zfsnap.8" /usr/local/share/man/man8/zfsnap.8
+
+[$HOME/src/github.com/jimsalterjrs/sanoid]
+checkout = git clone 'https://github.com/jimsalterjrs/sanoid.git' 'sanoid'
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups = ln -sf "$MR_REPO/syncoid" /usr/local/sbin/syncoid
 
 [$HOME/.tmux/plugins/tpm]
 checkout = git clone 'https://github.com/tmux-plugins/tpm' 'tpm'
