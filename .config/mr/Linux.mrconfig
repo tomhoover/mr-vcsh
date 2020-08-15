@@ -2,7 +2,7 @@
 checkout =
     vcsh clone 'https://github.com/tomhoover/apt-vcsh.git' 'apt'
     cd "$MR_REPO"
-    git remote add gitolite git@git.local:tom/apt-vcsh.git
+    git remote add gitolite git@gitolite:tom/apt-vcsh.git
 push = vcsh apt push origin; vcsh apt push gitolite || true
 fixups = chmod -R go= ~/.config
 
