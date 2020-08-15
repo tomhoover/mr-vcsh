@@ -48,8 +48,7 @@ checkout =
     vcsh private remote add gabriel gabriel:git/private-vcsh.git
     vcsh private remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
 skip = ! mylaptop
-# push = vcsh private push origin; vcsh private push bethel; vcsh private push drobo; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
-push = vcsh private push origin; vcsh private push gabriel; vcsh private push ironkey 2>/dev/null || true
+push = vcsh private push origin; vcsh private push gabriel 2>/dev/null || true
 fixups =
     chmod -R go= ~/.config
     chmod 600 ~/.ssh/*_rsa
