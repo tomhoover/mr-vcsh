@@ -87,6 +87,10 @@ checkout =
 push = git push origin; git push gitolite || true
 fixups = chmod 755 ~/bin
 
+[$HOME/fin]
+checkout = git clone 'git@gitolite:fin.git' 'fin'
+skip = ! mylaptop
+
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
     git clone 'git@gitolite:tom/spwhitton_dotfiles.git' 'dotfiles'
