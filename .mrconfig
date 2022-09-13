@@ -19,7 +19,7 @@ git_remotes = git remote -v
 # - mylaptop only succeeds if it's on my main development laptop, which
 #   gets lots of extra cruft
 lib =
-    hostname="$(hostname)"
+    hostname="$(hostname -s)"
     whoami="$(whoami)"
     anon() {
         ( GIT_CONFIG=$HOME/.git/config git config remote.origin.url || cat .git/remotes/origin ) | grep -q 'git://'
@@ -42,7 +42,7 @@ lib =
         return 1
     }
     mylaptop() {
-        on tom@ariel || on tom@theophilus
+        on tom@ariel || on tom@bethel || on tom@theophilus
     }
     hass() {
         mylaptop || on tom@ha
@@ -113,12 +113,12 @@ fixups =
     chmod 755 ~/src
     ln -sf "$HOME/src/github.com" "$HOME/src/gh"
 
-[$HOME/src/dotfiles]
-checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
-skip = ! mylaptop
-fixups =
-    chmod 755 ~/src
-    ln -sf "$HOME/src/github.com" "$HOME/src/gh"
+# [$HOME/src/dotfiles]
+# checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
+# skip = ! mylaptop
+# fixups =
+#     chmod 755 ~/src
+#     ln -sf "$HOME/src/github.com" "$HOME/src/gh"
 
 [$HOME/src/tomhoover.github.io]
 checkout = git clone 'https://github.com/tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'

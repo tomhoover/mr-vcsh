@@ -1,7 +1,11 @@
 ~/src/.mrconfig
 ~/src/github.com/.mrconfig
 ~/.config/mr/Darwin.mrconfig
+~/.config/mr/Linux.mrconfig
 ~/.config/mr/ariel.mrconfig
 ~/.config/mr/bethel.mrconfig
+~/.config/mr/gabriel.mrconfig
+~/.config/mr/ha.mrconfig
+~/.config/mr/home_automation.mrconfig
 ~/.config/mr/src.mrconfig
 ~/.config/mr/vcsh.mrconfig
