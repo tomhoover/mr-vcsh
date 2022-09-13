@@ -47,8 +47,11 @@ checkout =
     # git remote add drobo drobo.local:git/private-vcsh.git
     vcsh private remote add gabriel gabriel:git/private-vcsh.git
     vcsh private remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
+    vcsh private remote add usbac /Volumes/USBAC/git/private-vcsh.git
+    vcsh private config core.sharedrepository 600
+    vcsh private config receive.denyNonFastForwards true
 skip = ! mylaptop
-push = vcsh private push origin; vcsh private push gabriel 2>/dev/null || true
+push = vcsh private push origin; vcsh private push gabriel 2>/dev/null; vcsh private push ironkey 2>/dev/null; vcsh private push usbac 2>/dev/null || true
 fixups =
     chmod -R go= ~/.config
     chmod 600 ~/.ssh/*_rsa
