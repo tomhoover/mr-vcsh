@@ -90,6 +90,7 @@ fixups = chmod 755 ~/bin
 [$HOME/fin]
 checkout = git clone 'git@gitolite:fin.git' 'fin'
 skip = ! mylaptop
+push = git commit -a -m "$(date +%y%m%d)" && git push origin
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
