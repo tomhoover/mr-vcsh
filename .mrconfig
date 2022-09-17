@@ -114,13 +114,6 @@ fixups =
     chmod 755 ~/src
     ln -sf "$HOME/src/github.com" "$HOME/src/gh"
 
-# [$HOME/src/dotfiles]
-# checkout = git clone 'https://github.com/tomhoover/dotfiles.git' 'dotfiles'
-# skip = ! mylaptop
-# fixups =
-#     chmod 755 ~/src
-#     ln -sf "$HOME/src/github.com" "$HOME/src/gh"
-
 [$HOME/src/tomhoover.github.io]
 checkout = git clone 'https://github.com/tomhoover/tomhoover.github.io.git' 'tomhoover.github.io'
 skip = ! mylaptop
