@@ -6,7 +6,7 @@ checkout =
 skip = root
 push = vcsh crontab push origin; vcsh crontab push gitolite || true
 fixups =
-    chmod -R go= ~/.config
+    chmod -R go= $HOME/.config
     cd
     [ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`.crontab /etc/crontab`tput sgr0`'" || true
     [ -f .config/crontab/`hostname -s`-crond ] && [ ! -f /etc/cron.d/`hostname -s`-crond ] && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`-crond /etc/cron.d`tput sgr0`'" || true
@@ -19,7 +19,7 @@ checkout =
     cd "$MR_REPO"
     vcsh dotfiles remote add gitolite git@gitolite:tom/dotfiles-vcsh.git
 push = vcsh dotfiles push origin; vcsh dotfiles push gitolite || true
-fixups = chmod -R go= ~/.config
+fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout =
@@ -28,8 +28,8 @@ checkout =
     vcsh git remote add gitolite git@gitolite:tom/git-vcsh.git
 push = vcsh git push origin; vcsh git push gitolite || true
 fixups =
-    chmod -R go= ~/.config
-    chmod -R go= ~/.gitignore.d
+    chmod -R go= $HOME/.config
+    chmod -R go= $HOME/.gitignore.d
 
 [$HOME/.config/vcsh/repo.d/mr.git]
 checkout =
@@ -37,7 +37,7 @@ checkout =
     cd "$MR_REPO"
     vcsh mr remote add gitolite git@gitolite:tom/mr-vcsh.git
 push = vcsh mr push origin; vcsh mr push gitolite || true
-fixups = chmod -R go= ~/.config
+fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
@@ -53,5 +53,5 @@ checkout =
 skip = ! mylaptop
 push = vcsh private push origin; vcsh private push gabriel 2>/dev/null || true
 fixups =
-    chmod -R go= ~/.config
-    chmod 600 ~/.ssh/*_rsa
+    chmod -R go= $HOME/.config
+    chmod 600 $HOME/.ssh/*_rsa
