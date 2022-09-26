@@ -74,9 +74,10 @@ checkout =
     git clone 'git@gitolite:gnupg.git' '.gnupg'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/gnupg.git
+    git remote add synology synology:git/gnupg.git
     git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
-push = git push origin; git push gabriel 2>/dev/null || true
+push = git push origin; git push synology; git push gabriel 2>/dev/null || true
 fixups = chmod -R go= $HOME/.gnupg
 
 [$HOME/bin]
@@ -88,9 +89,13 @@ push = git push origin; git push gitolite || true
 fixups = chmod 755 $HOME/bin
 
 [$HOME/fin]
-checkout = git clone 'git@gitolite:fin.git' 'fin'
+checkout = 
+    git clone 'git@gitolite:fin.git' 'fin'
+    cd "$MR_REPO"
+    git remote add gabriel gabriel:git/fin.git
+    git remote add synology synology:git/fin.git
 skip = ! mylaptop
-push = git commit -a -m "$(date +%y%m%d)" && git push origin
+push = git commit -a -m "$(date +%y%m%d)" && git push origin; git push synology; git push gabriel 2>/dev/null || true
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
