@@ -6,7 +6,3 @@
 !/.gitignore.d/mr
 !/.mrconfig
 !/.mrtrust
-!/src
-!/src/.mrconfig
-!/src/github.com
-!/src/github.com/.mrconfig
