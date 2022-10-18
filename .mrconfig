@@ -74,7 +74,7 @@ checkout =
     git clone 'git@gitolite:gnupg.git' '.gnupg'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/gnupg.git
-    git remote add synology synology-git:git/gnupg.git
+    git remote add synology SYNOLOGY:git/gnupg.git
     git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
 push = git push origin; git push synology; git push gabriel 2>/dev/null || true
@@ -93,7 +93,7 @@ checkout =
     git clone 'git@gitolite:fin.git' 'fin'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/fin.git
-    git remote add synology synology-git:git/fin.git
+    git remote add synology SYNOLOGY:git/fin.git
 skip = ! mylaptop
 push = git commit -am "$(date +%y%m%d)" && git push origin; git push synology; git push gabriel 2>/dev/null || true
 
@@ -114,7 +114,7 @@ checkout =
     git clone 'git@gitolite:zLinux-bin.git' 'zLinux-bin'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/zLinux-bin.git
-    git remote add synology synology-git:git/zLinux-bin.git
+    git remote add synology SYNOLOGY:git/zLinux-bin.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = git push origin; git push synology; git push gabriel 2>/dev/null || true
 fixups = chmod 755 $HOME/src
