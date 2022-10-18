@@ -46,7 +46,7 @@ checkout =
     # git remote add bethel bethel.local:git/private-vcsh.git
     # git remote add drobo drobo.local:git/private-vcsh.git
     vcsh private remote add gabriel gabriel:git/private-vcsh.git
-    vcsh private remote add synology synology:git/private-vcsh.git
+    vcsh private remote add synology synology-git:git/private-vcsh.git
     vcsh private remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
     vcsh private remote add usbac /Volumes/USBAC/git/private-vcsh.git
     vcsh private config core.sharedrepository 600
