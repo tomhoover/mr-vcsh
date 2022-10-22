@@ -60,3 +60,12 @@ fixups =
     defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2"
     # Tell iTerm2 to use the custom preferences in the directory
     defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+[$HOME/.config/vcsh/repo.d/obsidian.git]
+checkout =
+    vcsh clone 'SYNOLOGY:git/obsidian-vcsh.git' 'obsidian'
+    cd "$MR_REPO"
+    vcsh obsidian remote add gitolite git@gitolite:tom/obsidian-vcsh.git
+skip = ! mylaptop
+push = vcsh obsidian push origin; vcsh obsidian push gitolite || true
+fixups = chmod -R go= /Users/tom/.config
