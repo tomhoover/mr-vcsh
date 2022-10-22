@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# https://r0tty.org/blog/vcsh-auto-init/
+# https://r0tty.org/git/dotfiles/vcsh/tree/.config/vcsh/hooks-available/post-init?id=e592db34
+
+if [ -n "$VCSH_GITURL" ]; then
+    vcsh "$VCSH_DIRECTORY" remote add origin "$VCSH_GITURL/$VCSH_DIRECTORY-vcsh.git"
+    vcsh "$VCSH_DIRECTORY" remote add gitolite "git@gitolite:tom/$VCSH_DIRECTORY-vcsh.git"
+fi
+if [ -n "$VCSH_GITHOST" ] && [ -n "$VCSH_GITHOST_DIRECTORY" ]; then
+    remote_gitdir="$VCSH_GITHOST_DIRECTORY/$VCSH_DIRECTORY-vcsh.git"
+    command="git init --bare '$remote_gitdir'"
+    if [ -n "$VCSH_GITHOST_DESCRIPTION" ]; then
+        description="$(eval echo \"$VCSH_GITHOST_DESCRIPTION\")"
+        command="$command && echo \"${description}\" > '$remote_gitdir/description'"
+    fi
+    ssh "$VCSH_GITHOST" "$command"
+fi
