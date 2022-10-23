@@ -156,12 +156,6 @@ fixups =
 
 ### read-only repos
 
-[$HOME/.tmux/plugins/tpm]
-checkout = git clone 'https://github.com/tmux-plugins/tpm' 'tpm'
-skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = :
-fixups = chmod 755 $HOME/.tmux
-
 [$HOME/src/nojhan/liquidprompt]
 checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
