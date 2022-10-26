@@ -67,5 +67,9 @@ checkout =
     cd "$MR_REPO"
     vcsh obsidian remote add gitolite git@gitolite:tom/obsidian-vcsh.git
 skip = ! on tom@bethel
-push = vcsh obsidian add "*.md" 2>/dev/null && vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
+push = vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
 fixups = chmod -R go= /Users/tom/.config
+
+# push = vcsh obsidian add "*.md" 2>/dev/null ; vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
+# push = vcsh obsidian add "*.md" || vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
+# push = vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
