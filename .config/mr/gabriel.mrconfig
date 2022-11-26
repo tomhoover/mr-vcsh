@@ -10,7 +10,7 @@ skip = root
 checkout = git clone 'https://github.com/tomhoover/docker-compose-gabriel.git' 'docker-compose-gabriel'
 skip = root
 
-# read-only repos
+##### read-only repos
 
 [src/github.com/DrWhax/truecrypt-archive]
 checkout = git clone 'https://github.com/DrWhax/truecrypt-archive.git' 'truecrypt-archive'
