@@ -4,7 +4,7 @@ checkout =
     cd "$MR_REPO"
     vcsh crontab remote add gitolite git@gitolite:tom/crontab-vcsh.git
 skip = root
-push = vcsh crontab push origin; vcsh crontab push gitolite || true
+push = vcsh crontab push origin master ; vcsh crontab push gitolite || true
 fixups =
     chmod -R go= $HOME/.config
     cd
@@ -18,7 +18,7 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
     cd "$MR_REPO"
     vcsh dotfiles remote add gitolite git@gitolite:tom/dotfiles-vcsh.git
-push = vcsh dotfiles push origin; vcsh dotfiles push gitolite || true
+push = vcsh dotfiles push origin master ; vcsh dotfiles push gitolite || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
@@ -26,7 +26,7 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
     cd "$MR_REPO"
     vcsh git remote add gitolite git@gitolite:tom/git-vcsh.git
-push = vcsh git push origin; vcsh git push gitolite || true
+push = vcsh git push origin master ; vcsh git push gitolite || true
 fixups =
     chmod -R go= $HOME/.config
     chmod -R go= $HOME/.gitignore.d
@@ -36,7 +36,7 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
     cd "$MR_REPO"
     vcsh mr remote add gitolite git@gitolite:tom/mr-vcsh.git
-push = vcsh mr push origin; vcsh mr push gitolite || true
+push = vcsh mr push origin master ; vcsh mr push gitolite || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/private.git]

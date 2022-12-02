@@ -59,7 +59,7 @@ checkout =
     cd "$MR_REPO"
     git remote add gitolite git@gitolite:tom/ansible.git
 skip = ! mylaptop
-push = git push origin; git push gitolite || true
+push = git push origin master ; git push gitolite || true
 
 [$HOME/.dotfiles]
 checkout =
@@ -67,7 +67,7 @@ checkout =
     cd "$MR_REPO"
     git remote add gitolite git@gitolite:tom/dotfiles.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
-push = git push origin; git push gitolite || true
+push = git push origin master ; git push gitolite || true
 
 [$HOME/.gnupg]
 checkout =
@@ -85,7 +85,7 @@ checkout =
     git clone 'https://github.com/tomhoover/bin.git' 'bin'
     cd "$MR_REPO"
     git remote add gitolite git@gitolite:tom/bin.git
-push = git push origin; git push gitolite || true
+push = git push origin master ; git push gitolite || true
 fixups = chmod 755 $HOME/bin
 
 [$HOME/fin]
