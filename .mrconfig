@@ -81,7 +81,7 @@ checkout =
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/gnupg.git
     git remote add synology SYNOLOGY:git/gnupg.git
-    git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
+    # git remote add ironkey /Volumes/IRONKEY8/git/gnupg.git
 skip = ! mylaptop
 push = git push origin; git push synology; git push gabriel 2>/dev/null || true
 fixups = chmod -R go= $HOME/.gnupg
