@@ -57,7 +57,7 @@ lib =
 checkout =
     git clone 'https://github.com/tomhoover/ansible.git' '.ansible'
     cd "$MR_REPO"
-    git remote add gitolite git@gitolite:tom/ansible.git
+    git remote add gitolite git@gitolite.t0m.us:tom/ansible.git
 skip = ! mylaptop
 push = git push origin master ; git push gitolite || true
 
@@ -65,13 +65,13 @@ push = git push origin master ; git push gitolite || true
 checkout =
     git clone 'https://github.com/tomhoover/dotfiles.git' '.dotfiles'
     cd "$MR_REPO"
-    git remote add gitolite git@gitolite:tom/dotfiles.git
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+    git remote add gitolite git@gitolite.t0m.us:tom/dotfiles.git
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = git push origin master ; git push gitolite || true
 
 [$HOME/.gnupg]
 checkout =
-    git clone 'git@gitolite:gnupg.git' '.gnupg'
+    git clone 'git@gitolite.t0m.us:gnupg.git' '.gnupg'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/gnupg.git
     git remote add synology SYNOLOGY:git/gnupg.git
@@ -84,13 +84,13 @@ fixups = chmod -R go= $HOME/.gnupg
 checkout =
     git clone 'https://github.com/tomhoover/bin.git' 'bin'
     cd "$MR_REPO"
-    git remote add gitolite git@gitolite:tom/bin.git
+    git remote add gitolite git@gitolite.t0m.us:tom/bin.git
 push = git push origin master ; git push gitolite || true
 fixups = chmod 755 $HOME/bin
 
 [$HOME/fin]
-checkout = 
-    git clone 'git@gitolite:fin.git' 'fin'
+checkout =
+    git clone 'git@gitolite.t0m.us:fin.git' 'fin'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/fin.git
     git remote add synology SYNOLOGY:git/fin.git
@@ -99,7 +99,7 @@ push = git commit -am "$(date +%y%m%d)" && git push origin; git push synology; g
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
-    git clone 'git@gitolite:tom/spwhitton_dotfiles.git' 'dotfiles'
+    git clone 'git@gitolite.t0m.us:tom/spwhitton_dotfiles.git' 'dotfiles'
     cd "$MR_REPO"
     git remote add upstream git://spwhitton.name/dotfiles.git
 skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
@@ -111,7 +111,7 @@ fixups =
 
 [$HOME/src/zLinux-bin]
 checkout =
-    git clone 'git@gitolite:zLinux-bin.git' 'zLinux-bin'
+    git clone 'git@gitolite.t0m.us:zLinux-bin.git' 'zLinux-bin'
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/zLinux-bin.git
     git remote add synology SYNOLOGY:git/zLinux-bin.git
@@ -195,9 +195,10 @@ fixups =
 
 ### included repos
 
-# include = cat $HOME/.config/mr/`uname`.mrconfig 2>/dev/null || true
-include = cat $HOME/.config/mr/`uname`.mrconfig || true
-include = cat $HOME/.config/mr/`hostname -s`.mrconfig || true
+# include = cat $HOME/.config/mr/`uname`.mrconfig || true
+# include = cat $HOME/.config/mr/`hostname -s`.mrconfig || true
+include = cat $HOME/.config/mr/`uname`.mrconfig 2>/dev/null || true
+include = cat $HOME/.config/mr/`hostname -s`.mrconfig 2>/dev/null || true
 include = cat $HOME/.config/mr/home_automation.mrconfig || true
 include = cat $HOME/.config/mr/src.mrconfig || true
 include = cat $HOME/.config/mr/vcsh.mrconfig || true
