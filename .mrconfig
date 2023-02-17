@@ -51,10 +51,10 @@ lib =
         test "$whoami" = root
     }
     apt() {
-        command -v apt-get
+        command -v apt-get >/dev/null 2>&1
     }
     zfs() {
-        command -v zpool && command -v zfs
+        command -v zpool >/dev/null 2>&1 && command -v zfs >/dev/null 2>&1
     }
 
 ### common repos
