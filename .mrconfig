@@ -47,6 +47,13 @@ lib =
     hass() {
         mylaptop || on tom@ha
     }
+    private() {
+        if [ -f $HOME/.config/vcsh/repo.d/private.git/config ]; then
+            return 0
+        else
+            return 1
+        fi
+    }
     root() {
         test "$whoami" = root
     }
