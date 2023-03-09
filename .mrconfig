@@ -93,6 +93,14 @@ skip = ! mylaptop
 push = git push origin; git push synology; git push gabriel 2>/dev/null || true
 fixups = chmod -R go= $HOME/.gnupg
 
+[$HOME/Vault]
+checkout =
+    git clone 'git@gitolite.t0m.us:Vault.git' 'Vault'
+    cd "$MR_REPO"
+    git remote add gabriel gabriel:git/Vault.git
+    git remote add synology SYNOLOGY:git/Vault.git
+push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push origin; git push synology; git push gabriel 2>/dev/null || true
+
 [$HOME/bin]
 checkout =
     git clone 'https://github.com/tomhoover/bin.git' 'bin'
@@ -108,7 +116,7 @@ checkout =
     git remote add gabriel gabriel:git/fin.git
     git remote add synology SYNOLOGY:git/fin.git
 skip = ! mylaptop
-push = git commit -am "$(date +%y%m%d)" && git push origin; git push synology; git push gabriel 2>/dev/null || true
+push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push origin; git push synology; git push gabriel 2>/dev/null || true
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
