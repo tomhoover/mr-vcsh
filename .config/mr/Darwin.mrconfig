@@ -22,17 +22,17 @@ fixups =
 
 [$HOME/src/github.com/boxofsnoo/Fairmount]
 checkout = git clone 'https://github.com/BoxOfSnoo/Fairmount.git' 'Fairmount'
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+skip = ! mydesktop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 
 [$HOME/src/github.com/dhess/applescripts]
 checkout = git clone 'https://github.com/dhess/applescripts.git' 'applescripts'
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+skip = ! mydesktop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 
 [$HOME/src/github.com/donmelton/video_transcoding]
 checkout = git clone 'https://github.com/donmelton/video_transcoding.git' 'video_transcoding'
-skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+skip = ! mydesktop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 
 [$HOME/src/github.com/mathiasbynens/dotfiles]

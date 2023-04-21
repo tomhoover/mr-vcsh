@@ -41,6 +41,9 @@ lib =
         done
         return 1
     }
+    mydesktop() {
+        on tom@bethel
+    }
     mylaptop() {
         on tom@ariel || on tom@bethel || on tom@theophilus
     }
@@ -115,7 +118,7 @@ checkout =
     cd "$MR_REPO"
     git remote add gabriel gabriel:git/fin.git
     git remote add synology SYNOLOGY:git/fin.git
-skip = ! mylaptop
+skip = ! mydesktop
 push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push origin; git push synology; git push gabriel 2>/dev/null || true
 
 [$HOME/src/git.spwhitton.name/dotfiles]
