@@ -2,7 +2,7 @@
 checkout =
     vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
     cd "$MR_REPO"
-    vcsh crontab remote add gitolite git@gitolite.t0m.us:tom/crontab-vcsh.git
+    vcsh crontab remote add gitolite git@gitolite:tom/crontab-vcsh.git
 skip = root
 push = vcsh crontab push origin master ; vcsh crontab push gitolite || true
 fixups =
@@ -17,7 +17,7 @@ fixups =
 checkout =
     vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
     cd "$MR_REPO"
-    vcsh dotfiles remote add gitolite git@gitolite.t0m.us:tom/dotfiles-vcsh.git
+    vcsh dotfiles remote add gitolite git@gitolite:tom/dotfiles-vcsh.git
 push = vcsh dotfiles push origin master ; vcsh dotfiles push gitolite || true
 fixups = chmod -R go= $HOME/.config
 
@@ -25,7 +25,7 @@ fixups = chmod -R go= $HOME/.config
 checkout =
     vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
     cd "$MR_REPO"
-    vcsh git remote add gitolite git@gitolite.t0m.us:tom/git-vcsh.git
+    vcsh git remote add gitolite git@gitolite:tom/git-vcsh.git
 push = vcsh git push origin master ; vcsh git push gitolite || true
 fixups =
     chmod -R go= $HOME/.config
@@ -35,13 +35,13 @@ fixups =
 checkout =
     vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
     cd "$MR_REPO"
-    vcsh mr remote add gitolite git@gitolite.t0m.us:tom/mr-vcsh.git
+    vcsh mr remote add gitolite git@gitolite:tom/mr-vcsh.git
 push = vcsh mr push origin master ; vcsh mr push gitolite || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
-    vcsh clone 'git@gitolite.t0m.us:private-vcsh.git' 'private'
+    vcsh clone 'git@gitolite:private-vcsh.git' 'private'
     cd "$MR_REPO"
     # git remote add bethel bethel.local:git/private-vcsh.git
     # git remote add drobo drobo.local:git/private-vcsh.git
@@ -66,7 +66,7 @@ fixups =
 # checkout =
 #     vcsh clone 'SYNOLOGY:git/obsidian-vcsh.git' 'obsidian'
 #     cd "$MR_REPO"
-#     vcsh obsidian remote add gitolite git@gitolite.t0m.us:tom/obsidian-vcsh.git
+#     vcsh obsidian remote add gitolite git@gitolite:tom/obsidian-vcsh.git
 # skip = ! on tom@bethel
 # push = vcsh obsidian commit -am "$(date '+%Y-%m-%d %H:%M')" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
 # fixups = chmod -R go= /Users/tom/.config
