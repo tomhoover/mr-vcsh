@@ -74,7 +74,7 @@ checkout =
     git clone 'https://github.com/tomhoover/ansible.git' '.ansible'
     cd "$MR_REPO"
     git remote add gitolite git@gitolite:tom/ansible.git
-skip = ! mylaptop
+skip = ! mydesktop
 push = git push origin master ; git push gitolite || true
 
 [$HOME/.dotfiles]
