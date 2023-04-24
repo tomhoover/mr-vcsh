@@ -3,8 +3,10 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
     cd "$MR_REPO"
     vcsh crontab remote add gitolite git@gitolite:tom/crontab-vcsh.git
+    vcsh crontab remote add gitolite1 gitolite1:tom/crontab-vcsh.git
+    vcsh crontab remote add gitolite2 gitolite2:tom/crontab-vcsh.git
 skip = root
-push = vcsh crontab push origin master ; vcsh crontab push gitolite || true
+push = vcsh crontab push origin master ; vcsh crontab push gitolite ; vcsh crontab push gitolite1 ; vcsh crontab push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
     cd
@@ -18,7 +20,9 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
     cd "$MR_REPO"
     vcsh dotfiles remote add gitolite git@gitolite:tom/dotfiles-vcsh.git
-push = vcsh dotfiles push origin master ; vcsh dotfiles push gitolite || true
+    vcsh dotfiles remote add gitolite1 gitolite1:tom/dotfiles-vcsh.git
+    vcsh dotfiles remote add gitolite2 gitolite2:tom/dotfiles-vcsh.git
+push = vcsh dotfiles push origin master ; vcsh dotfiles push gitolite ; vcsh dotfiles push gitolite1 ; vcsh dotfiles push gitolite2 || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
@@ -26,7 +30,9 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
     cd "$MR_REPO"
     vcsh git remote add gitolite git@gitolite:tom/git-vcsh.git
-push = vcsh git push origin master ; vcsh git push gitolite || true
+    vcsh git remote add gitolite1 gitolite1:tom/git-vcsh.git
+    vcsh git remote add gitolite2 gitolite2:tom/git-vcsh.git
+push = vcsh git push origin master ; vcsh git push gitolite ; vcsh git push gitolite1 ; vcsh git push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
     chmod -R go= $HOME/.gitignore.d
@@ -36,7 +42,9 @@ checkout =
     vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
     cd "$MR_REPO"
     vcsh mr remote add gitolite git@gitolite:tom/mr-vcsh.git
-push = vcsh mr push origin master ; vcsh mr push gitolite || true
+    vcsh mr remote add gitolite1 gitolite1:tom/mr-vcsh.git
+    vcsh mr remote add gitolite2 gitolite2:tom/mr-vcsh.git
+push = vcsh mr push origin master ; vcsh mr push gitolite ; vcsh mr push gitolite1 ; vcsh mr push gitolite2 || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/private.git]
