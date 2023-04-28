@@ -53,6 +53,8 @@ checkout =
     cd "$MR_REPO"
     # git remote add bethel bethel.local:git/private-vcsh.git
     # git remote add drobo drobo.local:git/private-vcsh.git
+    vcsh private remote add gitolite1 gitolite1:private-vcsh.git
+    vcsh private remote add gitolite2 gitolite2:private-vcsh.git
     vcsh private remote add gabriel gabriel:git/private-vcsh.git
     vcsh private remote add synology SYNOLOGY:git/private-vcsh.git
     # vcsh private remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
@@ -60,7 +62,7 @@ checkout =
     vcsh private config core.sharedrepository 600
     vcsh private config receive.denyNonFastForwards true
 skip = ! mylaptop && ! private
-push = vcsh private push origin; vcsh private push synology; vcsh private push gabriel 2>/dev/null || true
+push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2; vcsh private push synology; vcsh private push gabriel 2>/dev/null || true
 fixups =
     chmod -R go= $HOME/.config
     chmod 600 $HOME/.ssh/*_rsa
