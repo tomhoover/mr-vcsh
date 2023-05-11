@@ -6,7 +6,7 @@ checkout =
     vcsh crontab remote add gitolite1 gitolite1:tom/crontab-vcsh.git
     vcsh crontab remote add gitolite2 gitolite2:tom/crontab-vcsh.git
 skip = root
-push = vcsh crontab push origin master ; vcsh crontab push gitea ; vcsh crontab push gitolite1 ; vcsh crontab push gitolite2 || true
+push = vcsh crontab push origin master; vcsh crontab push gitea; vcsh crontab push gitolite1; vcsh crontab push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
     cd
@@ -22,7 +22,7 @@ checkout =
     vcsh dotfiles remote add gitea gitea:tom/dotfiles-vcsh.git
     vcsh dotfiles remote add gitolite1 gitolite1:tom/dotfiles-vcsh.git
     vcsh dotfiles remote add gitolite2 gitolite2:tom/dotfiles-vcsh.git
-push = vcsh dotfiles push origin master ; vcsh dotfiles push gitea ; vcsh dotfiles push gitolite1 ; vcsh dotfiles push gitolite2 || true
+push = vcsh dotfiles push origin master; vcsh dotfiles push gitea; vcsh dotfiles push gitolite1; vcsh dotfiles push gitolite2 || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
@@ -32,7 +32,7 @@ checkout =
     vcsh git remote add gitea gitea:tom/git-vcsh.git
     vcsh git remote add gitolite1 gitolite1:tom/git-vcsh.git
     vcsh git remote add gitolite2 gitolite2:tom/git-vcsh.git
-push = vcsh git push origin master ; vcsh git push gitea ; vcsh git push gitolite1 ; vcsh git push gitolite2 || true
+push = vcsh git push origin master; vcsh git push gitea; vcsh git push gitolite1; vcsh git push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
     chmod -R go= $HOME/.gitignore.d
@@ -44,25 +44,20 @@ checkout =
     vcsh mr remote add gitea gitea:tom/mr-vcsh.git
     vcsh mr remote add gitolite1 gitolite1:tom/mr-vcsh.git
     vcsh mr remote add gitolite2 gitolite2:tom/mr-vcsh.git
-push = vcsh mr push origin master ; vcsh mr push gitea ; vcsh mr push gitolite1 ; vcsh mr push gitolite2 || true
+push = vcsh mr push origin master; vcsh mr push gitea; vcsh mr push gitolite1; vcsh mr push gitolite2 || true
 fixups = chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
-    vcsh clone 'git@gitolite:private-vcsh.git' 'private'
+    vcsh clone 'gitea:tom/private-vcsh.git' 'private'
     cd "$MR_REPO"
-    # git remote add bethel bethel.local:git/private-vcsh.git
-    # git remote add drobo drobo.local:git/private-vcsh.git
     vcsh private remote add gitolite1 gitolite1:private-vcsh.git
     vcsh private remote add gitolite2 gitolite2:private-vcsh.git
-    vcsh private remote add gabriel gabriel:git/private-vcsh.git
-    vcsh private remote add synology SYNOLOGY:git/private-vcsh.git
-    # vcsh private remote add ironkey /Volumes/IRONKEY8/git/private-vcsh.git
     # vcsh private remote add usbac /Volumes/USBAC/git/private-vcsh.git
     vcsh private config core.sharedrepository 600
     vcsh private config receive.denyNonFastForwards true
 skip = ! mylaptop && ! private
-push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2; vcsh private push synology; vcsh private push gabriel 2>/dev/null || true
+push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
     chmod 600 $HOME/.ssh/*_rsa
@@ -71,16 +66,3 @@ fixups =
     [[ `uname` == "Darwin" ]] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
     # Tell iTerm2 to use the custom preferences in the directory
     [[ `uname` == "Darwin" ]] && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true || true
-
-# [$HOME/.config/vcsh/repo.d/obsidian.git]
-# checkout =
-#     vcsh clone 'SYNOLOGY:git/obsidian-vcsh.git' 'obsidian'
-#     cd "$MR_REPO"
-#     vcsh obsidian remote add gitolite git@gitolite:tom/obsidian-vcsh.git
-# skip = ! on tom@bethel
-# push = vcsh obsidian commit -am "$(date '+%Y-%m-%d %H:%M')" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
-# fixups = chmod -R go= /Users/tom/.config
-# 
-# # push = vcsh obsidian add "*.md" 2>/dev/null ; vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
-# # push = vcsh obsidian add "*.md" || vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true
-# # push = vcsh obsidian commit -am "$(date +%y%m%d)" && vcsh obsidian push origin; vcsh obsidian push gitolite || true

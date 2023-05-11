@@ -2,11 +2,11 @@
 checkout =
     git clone 'https://github.com/tomhoover/homebrew-brewfile.git' '.homebrew-brewfile'
     cd "$MR_REPO"
-    git remote add gitolite git@gitolite:tom/homebrew-brewfile.git
+    git remote add gitea gitea:tom/homebrew-brewfile.git
     git remote add gitolite1 gitolite1:tom/homebrew-brewfile.git
     git remote add gitolite2 gitolite2:tom/homebrew-brewfile.git
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
-push = git push origin master ; git push gitolite ; git push gitolite1 ; git push gitolite2 || true
+push = git push origin master ; git push gitea ; git push gitolite1 ; git push gitolite2 || true
 
 [$HOME/src/github.com/tomhoover/Check-RAID]
 checkout =

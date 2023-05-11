@@ -2,11 +2,11 @@
 checkout =
     vcsh clone 'https://github.com/tomhoover/apt-vcsh.git' 'apt'
     cd "$MR_REPO"
-    vcsh apt remote add gitolite git@gitolite:tom/apt-vcsh.git
+    vcsh apt remote add gitea gitea:tom/apt-vcsh.git
     vcsh apt remote add gitolite1 gitolite1:tom/apt-vcsh.git
     vcsh apt remote add gitolite2 gitolite2:tom/apt-vcsh.git
 skip = ! apt
-push = vcsh apt push origin master ; vcsh apt push gitolite ; vcsh apt push gitolite1 ; vcsh apt push gitolite2 || true
+push = vcsh apt push origin master; vcsh apt push gitea; vcsh apt push gitolite1; vcsh apt push gitolite2 || true
 fixups = chmod -R go= $HOME/.config
 
 ##### read-only repos

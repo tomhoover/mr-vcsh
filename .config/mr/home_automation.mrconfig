@@ -4,11 +4,11 @@
 checkout =
     git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
     cd "$MR_REPO"
-    git remote add gitolite git@gitolite:tom/home-assistant_config.git
+    git remote add gitea gitea:tom/home-assistant_config.git
     git remote add gitolite1 gitolite1:tom/home-assistant_config.git
     git remote add gitolite2 gitolite2:tom/home-assistant_config.git
 skip = ! mydesktop
-push = git push origin master ; git push gitolite ; git push gitolite1 ; git push gitolite2 || true
+push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
 
 [$HOME/src/mqttwarn]
 checkout = git clone 'https://github.com/tomhoover/mqttwarn.git' 'mqttwarn'
