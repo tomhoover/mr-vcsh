@@ -63,6 +63,6 @@ fixups =
     chmod 600 $HOME/.ssh/*_rsa
     chmod 600 $HOME/.my.cnf
     # Specify custom iTerm2 preferences directory
-    [[ `uname` == "Darwin" ]] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
+    [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
     # Tell iTerm2 to use the custom preferences in the directory
-    [[ `uname` == "Darwin" ]] && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true || true
+    [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true || true
