@@ -145,8 +145,8 @@ fixups =
     cp ~/.stglobalignore ~/Music
     cp ~/.stglobalignore ~/Pictures
     cp ~/.stglobalignore ~/Public
-    cp ~/.stglobalignore ~/Movies
-    cp ~/.stglobalignore ~/Videos
+    [ -d ~/Movies ] && cp ~/.stglobalignore ~/Movies
+    [ -d ~/Videos ] && cp ~/.stglobalignore ~/Videos
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
