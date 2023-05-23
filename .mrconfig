@@ -136,7 +136,16 @@ checkout =
     git remote add gitolite1 gitolite1:tom/Syncthing-Ignore-Patterns.git
     git remote add gitolite2 gitolite2:tom/Syncthing-Ignore-Patterns.git
 push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
-fixups = chmod 755 $HOME/src
+fixups =
+    chmod 755 $HOME/src
+    cp ~/.stglobalignore ~/Sync
+    cp ~/.stglobalignore ~/Desktop
+    cp ~/.stglobalignore ~/Documents
+    cp ~/.stglobalignore ~/Downloads
+    cp ~/.stglobalignore ~/Music
+    cp ~/.stglobalignore ~/Pictures
+    cp ~/.stglobalignore ~/Public
+    cp ~/.stglobalignore ~/Videos
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
