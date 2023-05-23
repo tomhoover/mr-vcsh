@@ -145,6 +145,7 @@ fixups =
     cp ~/.stglobalignore ~/Music
     cp ~/.stglobalignore ~/Pictures
     cp ~/.stglobalignore ~/Public
+    cp ~/.stglobalignore ~/Movies
     cp ~/.stglobalignore ~/Videos
 
 [$HOME/src/git.spwhitton.name/dotfiles]
