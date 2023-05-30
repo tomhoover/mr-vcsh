@@ -138,15 +138,15 @@ checkout =
 push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     chmod 755 $HOME/src
-    cp ~/.stglobalignore ~/Sync
-    cp ~/.stglobalignore ~/Desktop
-    cp ~/.stglobalignore ~/Documents
-    cp ~/.stglobalignore ~/Downloads
-    cp ~/.stglobalignore ~/Music
-    cp ~/.stglobalignore ~/Pictures
-    cp ~/.stglobalignore ~/Public
-    [ -d ~/Movies ] && cp ~/.stglobalignore ~/Movies || true
-    [ -d ~/Videos ] && cp ~/.stglobalignore ~/Videos || true
+    [ -d ~/Sync ]      && cp "$MR_REPO/.stglobalignore" ~/Sync      || true
+    [ -d ~/Desktop ]   && cp "$MR_REPO/.stglobalignore" ~/Desktop   || true
+    [ -d ~/Documents ] && cp "$MR_REPO/.stglobalignore" ~/Documents || true
+    [ -d ~/Downloads ] && cp "$MR_REPO/.stglobalignore" ~/Downloads || true
+    [ -d ~/Music ]     && cp "$MR_REPO/.stglobalignore" ~/Music     || true
+    [ -d ~/Pictures ]  && cp "$MR_REPO/.stglobalignore" ~/Pictures  || true
+    [ -d ~/Public ]    && cp "$MR_REPO/.stglobalignore" ~/Public    || true
+    [ -d ~/Movies ]    && cp "$MR_REPO/.stglobalignore" ~/Movies    || true
+    [ -d ~/Videos ]    && cp "$MR_REPO/.stglobalignore" ~/Videos    || true
 
 [$HOME/src/git.spwhitton.name/dotfiles]
 checkout =
