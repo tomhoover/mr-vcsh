@@ -45,7 +45,7 @@ lib =
         on tom@bethel
     }
     mylaptop() {
-        on tom@arch || on tom@ariel || on tom@bethel || on tom@theophilus
+        on tom@ariel || on tom@bethel || on tom@theophilus
     }
     hass() {
         mylaptop || on tom@ha
