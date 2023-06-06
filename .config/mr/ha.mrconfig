@@ -1,22 +1,22 @@
 [$HOME/appdata/hass]
-checkout =
-    git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
-    cd "$MR_REPO"
-    git remote add gitea gitea:tom/home-assistant_config.git
-    git remote add gitolite1 gitolite1:tom/home-assistant_config.git
-    git remote add gitolite2 gitolite2:tom/home-assistant_config.git
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
 skip = root
 push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
+fixups =
+    cd "$MR_REPO"
+    grep -q gitea     .git/config || git remote add gitea gitea:tom/home-assistant_config.git
+    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/home-assistant_config.git
+    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/home-assistant_config.git
 
 [$HOME/appdata/docker-compose-ha]
-checkout =
-    git clone 'https://github.com/tomhoover/docker-compose-ha.git' 'docker-compose-ha'
-    cd "$MR_REPO"
-    git remote add gitea gitea:tom/docker-compose-ha.git
-    git remote add gitolite1 gitolite1:tom/docker-compose-ha.git
-    git remote add gitolite2 gitolite2:tom/docker-compose-ha.git
+checkout = git clone 'https://github.com/tomhoover/docker-compose-ha.git' 'docker-compose-ha'
 skip = root
 push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
+fixups =
+    cd "$MR_REPO"
+    grep -q gitea     .git/config || git remote add gitea gitea:tom/docker-compose-ha.git
+    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/docker-compose-ha.git
+    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/docker-compose-ha.git
 
 # 2delete
 
