@@ -64,3 +64,13 @@ fixups =
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
     # Tell iTerm2 to use the custom preferences in the directory
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true || true
+
+[$HOME/.config/vcsh/repo.d/vault.git]
+checkout = vcsh clone 'gitea:tom/vault-vcsh.git' 'vault'
+skip = ! mylaptop
+push = vcsh vault push origin; vcsh vault push gitolite1; vcsh vault push gitolite2 || true
+fixups =
+    cd "$MR_REPO"
+    grep -q gitolite1 config || vcsh vault remote add gitolite1 gitolite1:vault-vcsh.git
+    grep -q gitolite2 config || vcsh vault remote add gitolite2 gitolite2:vault-vcsh.git
+    ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
