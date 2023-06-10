@@ -48,8 +48,8 @@ fixups =
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
     vcsh clone 'gitea:tom/private-vcsh.git' 'private'
-    vcsh private config core.sharedrepository 600
-    vcsh private config receive.denyNonFastForwards true
+    # vcsh private config core.sharedrepository 600
+    # vcsh private config receive.denyNonFastForwards true
 skip = ! mycomputer && ! private
 push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2 || true
 fixups =
