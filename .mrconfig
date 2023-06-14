@@ -75,7 +75,7 @@ lib =
 [$HOME/.ansible]
 checkout = git clone 'https://github.com/tomhoover/ansible.git' '.ansible'
 skip = ! mycomputer
-push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
+push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     .git/config || git remote add gitea gitea:tom/ansible.git
@@ -84,7 +84,7 @@ fixups =
 
 [$HOME/.dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' '.dotfiles'
-push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
+push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     .git/config || git remote add gitea gitea:tom/dotfiles.git
@@ -94,7 +94,7 @@ fixups =
 [$HOME/.gnupg]
 checkout = git clone 'gitea:tom/gnupg.git' '.gnupg'
 skip = ! mycomputer
-push = git push origin; git push gitolite1; git push gitolite2 || true
+push = git push --all origin; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:gnupg.git
@@ -103,7 +103,7 @@ fixups =
 
 [$HOME/bin]
 checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
-push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
+push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     .git/config || git remote add gitea gitea:tom/bin.git
@@ -114,7 +114,7 @@ fixups =
 [$HOME/fin]
 checkout = git clone 'gitea:tom/fin.git' 'fin'
 skip = ! mycomputer
-push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push origin; git push gitolite1 ; git push gitolite2 || true
+push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push --all origin; git push gitolite1 ; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/fin.git

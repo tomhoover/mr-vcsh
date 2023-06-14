@@ -1,7 +1,7 @@
 [$HOME/.config/vcsh/repo.d/crontab.git]
 checkout = vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
 skip = root
-push = vcsh crontab push origin master; vcsh crontab push gitea; vcsh crontab push gitolite1; vcsh crontab push gitolite2 || true
+push = vcsh crontab push origin master; vcsh crontab push --all gitea; vcsh crontab push gitolite1; vcsh crontab push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     config || vcsh crontab remote add gitea gitea:tom/crontab-vcsh.git
@@ -16,7 +16,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/dotfiles.git]
 checkout = vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
-push = vcsh dotfiles push origin master; vcsh dotfiles push gitea; vcsh dotfiles push gitolite1; vcsh dotfiles push gitolite2 || true
+push = vcsh dotfiles push origin master; vcsh dotfiles push --all gitea; vcsh dotfiles push gitolite1; vcsh dotfiles push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     config || vcsh dotfiles remote add gitea gitea:tom/dotfiles-vcsh.git
@@ -26,7 +26,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout = vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
-push = vcsh git push origin master; vcsh git push gitea; vcsh git push gitolite1; vcsh git push gitolite2 || true
+push = vcsh git push origin master; vcsh git push --all gitea; vcsh git push gitolite1; vcsh git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     config || vcsh git remote add gitea gitea:tom/git-vcsh.git
@@ -37,7 +37,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/mr.git]
 checkout = vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
-push = vcsh mr push origin master; vcsh mr push gitea; vcsh mr push gitolite1; vcsh mr push gitolite2 || true
+push = vcsh mr push origin master; vcsh mr push --all gitea; vcsh mr push gitolite1; vcsh mr push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     config || vcsh mr remote add gitea gitea:tom/mr-vcsh.git

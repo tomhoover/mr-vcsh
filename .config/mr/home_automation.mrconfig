@@ -3,7 +3,7 @@
 [$HOME/src/home-assistant_config]
 checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
 skip = ! mydesktop
-push = git push origin master; git push gitea; git push gitolite1; git push gitolite2 || true
+push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
     grep -q gitea     .git/config || git remote add gitea gitea:tom/home-assistant_config.git
