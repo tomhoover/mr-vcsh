@@ -19,7 +19,8 @@ git_remotes = git remote -v
 # - mylaptop only succeeds if it's on my main development laptop, which
 #   gets lots of extra cruft
 lib =
-    hostname="$(hostname -s)"
+    # hostname="$(hostname -s)"
+    hostname="$(uname -n | sed 's/\..*//')"     # alternative to $(hostname -s), as arch does not install 'hostname' by default
     whoami="$(whoami)"
     anon() {
         ( GIT_CONFIG=$HOME/.git/config git config remote.origin.url || cat .git/remotes/origin ) | grep -q 'git://'
@@ -162,10 +163,10 @@ fixups =
 
 ### included repos
 
-include = cat $HOME/.config/mr/`uname`.mrconfig || true
-include = cat $HOME/.config/mr/`hostname -s`.mrconfig || true
-# include = cat $HOME/.config/mr/`uname`.mrconfig 2>/dev/null || true
-# include = cat $HOME/.config/mr/`hostname -s`.mrconfig 2>/dev/null || true
+include = cat $HOME/.config/mr/$(uname).mrconfig || true
+include = cat $HOME/.config/mr/"$hostname".mrconfig || true
+# include = cat $HOME/.config/mr/$(uname).mrconfig 2>/dev/null || true
+# include = cat $HOME/.config/mr/$(hostname -s).mrconfig 2>/dev/null || true
 include = cat $HOME/.config/mr/home_automation.mrconfig || true
 include = cat $HOME/.config/mr/src.mrconfig || true
 include = cat $HOME/.config/mr/vcsh.mrconfig || true
