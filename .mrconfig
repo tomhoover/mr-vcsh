@@ -96,20 +96,20 @@ checkout = git clone 'gitea:tom/gnupg.git' '.gnupg'
 skip = ! mycomputer
 push = git push --all origin; git push gitolite1; git push gitolite2 || true
 fixups =
+    chmod -R go= $HOME/.gnupg
     cd "$MR_REPO"
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:gnupg.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:gnupg.git
-    chmod -R go= $HOME/.gnupg
 
 [$HOME/bin]
 checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
 push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
+    chmod 755 $HOME/bin
     cd "$MR_REPO"
     grep -q gitea     .git/config || git remote add gitea gitea:tom/bin.git
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/bin.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/bin.git
-    chmod 755 $HOME/bin
 
 [$HOME/fin]
 checkout = git clone 'gitea:tom/fin.git' 'fin'
@@ -135,8 +135,8 @@ checkout = git clone 'https://github.com/nojhan/liquidprompt.git' 'liquidprompt'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
-    ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
     chmod 755 $HOME/src
+    ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
     mkdir -p $HOME/.local/share
     ln -sf "$MR_REPO/liquidprompt" $HOME/.local/share/liquidprompt
     chmod go= $HOME/.local && chmod go= $HOME/.local/share

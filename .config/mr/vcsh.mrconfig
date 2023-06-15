@@ -3,11 +3,11 @@ checkout = vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
 skip = root
 push = vcsh crontab push origin master; vcsh crontab push --all gitea; vcsh crontab push gitolite1; vcsh crontab push gitolite2 || true
 fixups =
+    chmod -R go= $HOME/.config
     cd "$MR_REPO"
     grep -q gitea     config || vcsh crontab remote add gitea gitea:tom/crontab-vcsh.git
     grep -q gitolite1 config || vcsh crontab remote add gitolite1 gitolite1:tom/crontab-vcsh.git
     grep -q gitolite2 config || vcsh crontab remote add gitolite2 gitolite2:tom/crontab-vcsh.git
-    chmod -R go= $HOME/.config
     cd
     [ .config/crontab/`hostname -s`.crontab -nt /etc/crontab ] && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`.crontab /etc/crontab`tput sgr0`'" || true
     [ -f .config/crontab/`hostname -s`-crond ] && [ ! -f /etc/cron.d/`hostname -s`-crond ] && echo "" && echo "be sure to '`tput setaf 1`sudo cp $HOME/.config/crontab/`hostname -s`-crond /etc/cron.d`tput sgr0`'" || true
@@ -18,32 +18,32 @@ fixups =
 checkout = vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
 push = vcsh dotfiles push origin master; vcsh dotfiles push --all gitea; vcsh dotfiles push gitolite1; vcsh dotfiles push gitolite2 || true
 fixups =
+    chmod -R go= $HOME/.config
     cd "$MR_REPO"
     grep -q gitea     config || vcsh dotfiles remote add gitea gitea:tom/dotfiles-vcsh.git
     grep -q gitolite1 config || vcsh dotfiles remote add gitolite1 gitolite1:tom/dotfiles-vcsh.git
     grep -q gitolite2 config || vcsh dotfiles remote add gitolite2 gitolite2:tom/dotfiles-vcsh.git
-    chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout = vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
 push = vcsh git push origin master; vcsh git push --all gitea; vcsh git push gitolite1; vcsh git push gitolite2 || true
 fixups =
+    chmod -R go= $HOME/.config
+    chmod -R go= $HOME/.gitignore.d
     cd "$MR_REPO"
     grep -q gitea     config || vcsh git remote add gitea gitea:tom/git-vcsh.git
     grep -q gitolite1 config || vcsh git remote add gitolite1 gitolite1:tom/git-vcsh.git
     grep -q gitolite2 config || vcsh git remote add gitolite2 gitolite2:tom/git-vcsh.git
-    chmod -R go= $HOME/.config
-    chmod -R go= $HOME/.gitignore.d
 
 [$HOME/.config/vcsh/repo.d/mr.git]
 checkout = vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
 push = vcsh mr push origin master; vcsh mr push --all gitea; vcsh mr push gitolite1; vcsh mr push gitolite2 || true
 fixups =
+    chmod -R go= $HOME/.config
     cd "$MR_REPO"
     grep -q gitea     config || vcsh mr remote add gitea gitea:tom/mr-vcsh.git
     grep -q gitolite1 config || vcsh mr remote add gitolite1 gitolite1:tom/mr-vcsh.git
     grep -q gitolite2 config || vcsh mr remote add gitolite2 gitolite2:tom/mr-vcsh.git
-    chmod -R go= $HOME/.config
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
@@ -53,13 +53,13 @@ checkout =
 skip = ! mycomputer && ! private
 push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2 || true
 fixups =
+    chmod -R go= $HOME/.config
+    chmod 600 $HOME/.ssh/*_rsa
+    chmod 600 $HOME/.my.cnf
     cd "$MR_REPO"
     grep -q gitolite1 config || vcsh private remote add gitolite1 gitolite1:private-vcsh.git
     grep -q gitolite2 config || vcsh private remote add gitolite2 gitolite2:private-vcsh.git
     # grep -q usbac     config || vcsh private remote add usbac /Volumes/USBAC/git/private-vcsh.git
-    chmod -R go= $HOME/.config
-    chmod 600 $HOME/.ssh/*_rsa
-    chmod 600 $HOME/.my.cnf
     # Specify custom iTerm2 preferences directory
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
     # Tell iTerm2 to use the custom preferences in the directory
@@ -70,7 +70,7 @@ checkout = vcsh clone 'gitea:tom/vault-vcsh.git' 'vault'
 skip = ! mylaptop
 push = vcsh vault push origin; vcsh vault push gitolite1; vcsh vault push gitolite2 || true
 fixups =
+    ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
     cd "$MR_REPO"
     grep -q gitolite1 config || vcsh vault remote add gitolite1 gitolite1:vault-vcsh.git
     grep -q gitolite2 config || vcsh vault remote add gitolite2 gitolite2:vault-vcsh.git
-    ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
