@@ -73,12 +73,11 @@ lib =
 ### common repos
 
 [$HOME/.ansible]
-checkout = git clone 'https://github.com/tomhoover/ansible.git' '.ansible'
+checkout = git clone 'gitea:tom/ansible.git' '.ansible'
 skip = ! mycomputer
-push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
+push = git push --all origin; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
-    grep -q gitea     .git/config || git remote add gitea gitea:tom/ansible.git
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/ansible.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/ansible.git
 
