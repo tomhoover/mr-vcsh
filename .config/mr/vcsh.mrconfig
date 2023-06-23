@@ -1,5 +1,6 @@
 [$HOME/.config/vcsh/repo.d/crontab.git]
 checkout = vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
+fetch = vcsh crontab fetch --all --prune
 skip = root
 push = vcsh crontab push origin master; vcsh crontab push --all gitea; vcsh crontab push gitolite1; vcsh crontab push gitolite2 || true
 fixups =
@@ -16,6 +17,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/dotfiles.git]
 checkout = vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
+fetch = vcsh dotfiles fetch --all --prune
 push = vcsh dotfiles push origin master; vcsh dotfiles push --all gitea; vcsh dotfiles push gitolite1; vcsh dotfiles push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
@@ -26,6 +28,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout = vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
+fetch = vcsh git fetch --all --prune
 push = vcsh git push origin master; vcsh git push --all gitea; vcsh git push gitolite1; vcsh git push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
@@ -37,6 +40,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/mr.git]
 checkout = vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
+fetch = vcsh mr fetch --all --prune
 push = vcsh mr push origin master; vcsh mr push --all gitea; vcsh mr push gitolite1; vcsh mr push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
@@ -50,6 +54,7 @@ checkout =
     vcsh clone 'gitea:tom/private-vcsh.git' 'private'
     # vcsh private config core.sharedrepository 600
     # vcsh private config receive.denyNonFastForwards true
+fetch = vcsh private fetch --all --prune
 skip = ! mycomputer && ! private
 push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2 || true
 fixups =
@@ -67,6 +72,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/vault.git]
 checkout = vcsh clone 'gitea:tom/vault-vcsh.git' 'vault'
+fetch = vcsh vault fetch --all --prune
 skip = ! mylaptop
 push = vcsh vault push origin; vcsh vault push gitolite1; vcsh vault push gitolite2 || true
 fixups =
