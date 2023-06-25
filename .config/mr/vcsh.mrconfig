@@ -51,17 +51,18 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/private.git]
 checkout =
-    vcsh clone 'gitea:tom/private-vcsh.git' 'private'
+    vcsh clone -o gitea 'gitea:tom/private-vcsh.git' 'private'
     # vcsh private config core.sharedrepository 600
     # vcsh private config receive.denyNonFastForwards true
 fetch = vcsh private fetch --all --prune
 skip = ! mycomputer && ! private
-push = vcsh private push origin; vcsh private push gitolite1; vcsh private push gitolite2 || true
+push = vcsh private push --all gitea; vcsh private push gitolite1; vcsh private push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.config
     chmod 600 $HOME/.ssh/*_rsa
     chmod 600 $HOME/.my.cnf
     cd "$MR_REPO"
+    grep -q gitea     config || vcsh private remote rename origin gitea
     grep -q gitolite1 config || vcsh private remote add gitolite1 gitolite1:private-vcsh.git
     grep -q gitolite2 config || vcsh private remote add gitolite2 gitolite2:private-vcsh.git
     # grep -q usbac     config || vcsh private remote add usbac /Volumes/USBAC/git/private-vcsh.git
@@ -71,12 +72,13 @@ fixups =
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true || true
 
 [$HOME/.config/vcsh/repo.d/vault.git]
-checkout = vcsh clone 'gitea:tom/vault-vcsh.git' 'vault'
+checkout = vcsh clone -o gitea 'gitea:tom/vault-vcsh.git' 'vault'
 fetch = vcsh vault fetch --all --prune
 skip = ! mylaptop
-push = vcsh vault push origin; vcsh vault push gitolite1; vcsh vault push gitolite2 || true
+push = vcsh vault push --all gitea; vcsh vault push gitolite1; vcsh vault push gitolite2 || true
 fixups =
     ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
     cd "$MR_REPO"
+    grep -q gitea     config || vcsh vault remote rename origin gitea
     grep -q gitolite1 config || vcsh vault remote add gitolite1 gitolite1:vault-vcsh.git
     grep -q gitolite2 config || vcsh vault remote add gitolite2 gitolite2:vault-vcsh.git

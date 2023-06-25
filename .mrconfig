@@ -74,11 +74,12 @@ lib =
 ### common repos
 
 [$HOME/.ansible]
-checkout = git clone 'gitea:tom/ansible.git' '.ansible'
+checkout = git clone -o gitea 'gitea:tom/ansible.git' '.ansible'
 skip = ! mycomputer
-push = git push --all origin; git push gitolite1; git push gitolite2 || true
+push = git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
+    grep -q gitea     .git/config || git remote rename origin gitea
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/ansible.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/ansible.git
 
@@ -92,12 +93,13 @@ fixups =
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/dotfiles.git
 
 [$HOME/.gnupg]
-checkout = git clone 'gitea:tom/gnupg.git' '.gnupg'
+checkout = git clone -o gitea 'gitea:tom/gnupg.git' '.gnupg'
 skip = ! mycomputer
-push = git push --all origin; git push gitolite1; git push gitolite2 || true
+push = git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
     chmod -R go= $HOME/.gnupg
     cd "$MR_REPO"
+    grep -q gitea     .git/config || git remote rename origin gitea
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:gnupg.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:gnupg.git
 
@@ -112,11 +114,12 @@ fixups =
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/bin.git
 
 [$HOME/fin]
-checkout = git clone 'gitea:tom/fin.git' 'fin'
+checkout = git clone -o gitea 'gitea:tom/fin.git' 'fin'
 skip = ! mycomputer
-push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push --all origin; git push gitolite1 ; git push gitolite2 || true
+push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push --all gitea; git push gitolite1 ; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
+    grep -q gitea     .git/config || git remote rename origin gitea
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/fin.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/fin.git
 
