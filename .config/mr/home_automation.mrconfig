@@ -1,7 +1,7 @@
 ##### my Home Assistant config
 
-[$HOME/src/home-assistant_config]
-checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'home-assistant_config'
+[$HOME/src/hass]
+checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
 skip = ! mydesktop
 push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
 fixups =
