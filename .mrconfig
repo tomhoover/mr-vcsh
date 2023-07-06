@@ -163,11 +163,9 @@ fixups =
 ### included repos
 
 include = cat $HOME/.config/mr/$(uname).mrconfig || true
+# As arch does not install 'hostname' by default, replaced '$(hostname -s)' with '$(uname -n | sed 's/\..*//')':
 include = cat $HOME/.config/mr/$(uname -n | sed 's/\..*//').mrconfig || true
-# include = cat $HOME/.config/mr/$(uname).mrconfig 2>/dev/null || true
-# include = cat $HOME/.config/mr/$(hostname -s).mrconfig 2>/dev/null || true
 include = cat $HOME/.config/mr/home_automation.mrconfig || true
-include = cat $HOME/.config/mr/src.mrconfig || true
 include = cat $HOME/.config/mr/vcsh.mrconfig || true
 include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/.mrconfig || true
 # include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/github.com/.mrconfig || true
