@@ -169,5 +169,5 @@ include = cat $HOME/.config/mr/$(uname -n | sed 's/\..*//').mrconfig || true
 include = cat $HOME/.config/mr/home_automation.mrconfig || true
 include = cat $HOME/.config/mr/src.mrconfig || true
 include = cat $HOME/.config/mr/vcsh.mrconfig || true
-include = cat $HOME/src/.mrconfig || true
-# include = cat $HOME/src/github.com/.mrconfig || true
+include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/.mrconfig || true
+# include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/github.com/.mrconfig || true
