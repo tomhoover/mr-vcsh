@@ -100,6 +100,7 @@ fixups =
     cd "$MR_REPO"
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:gnupg.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:gnupg.git
+    grep -q ironkey   .git/config || git remote add ironkey /Volumes/IRONKEY64/git/gnupg.git
 
 [$HOME/bin]
 checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
