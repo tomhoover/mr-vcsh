@@ -121,6 +121,17 @@ fixups =
     grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/fin.git
     grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/fin.git
 
+[$HOME/src/github.com/tomhoover/simplesnap]
+checkout = git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
+skip = ! mycomputer
+push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
+fixups =
+    cd "$MR_REPO"
+    grep -q gitea     .git/config || git remote add gitea gitea:tom/simplesnap.git
+    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/simplesnap.git
+    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/simplesnap.git
+    grep -q upstream  .git/config || git remote add upstream https://github.com/jgoerzen/simplesnap.git
+
 ### read-only repos
 
 [$HOME/src/github.com/jimsalterjrs/sanoid]
