@@ -67,6 +67,8 @@ fixups =
     grep -q ironkey   config || vcsh private remote add ironkey /Volumes/IRONKEY64/git/private-vcsh.git
     # grep -q usbac     config || vcsh private remote add usbac /Volumes/USBAC/git/private-vcsh.git
     cat ~/.ssh/id_rsa_arch.pub ~/.ssh/id_rsa_ariel.pub ~/.ssh/id_rsa_bethel.pub ~/.ssh/id_rsa_theophilus.pub > ~/.ssh/authorized_keys.tom
+    # More crisp font for iTerm2 - https://superuser.com/questions/457253/more-crisp-font-for-iterm-on-osx
+    [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 AppleFontSmoothing -integer 1 || true
     # Specify custom iTerm2 preferences directory
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
     # Tell iTerm2 to use the custom preferences in the directory
