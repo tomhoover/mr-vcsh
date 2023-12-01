@@ -36,6 +36,16 @@ checkout = git clone 'https://github.com/donmelton/video_transcoding.git' 'video
 skip = ! mydesktop || ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 
+[$HOME/src/github.com/dracula/iterm]
+checkout = git clone 'https://github.com/dracula/iterm.git' 'iterm'
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+
+[$HOME/src/github.com/dracula/terminal-app]
+checkout = git clone 'https://github.com/dracula/terminal-app.git' 'terminal-app'
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+
 [$HOME/src/github.com/mathiasbynens/dotfiles]
 checkout = git clone 'https://github.com/mathiasbynens/dotfiles.git' 'dotfiles'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
