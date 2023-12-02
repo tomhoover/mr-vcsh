@@ -134,6 +134,18 @@ fixups =
 
 ### read-only repos
 
+[$HOME/src/github.com/dracula/kitty]
+checkout = git clone 'https://github.com/dracula/kitty.git' 'kitty'
+skip = ([ "$1" = update ] && ! hours_since "$1" 12)
+push = :
+fixups =
+    chmod 755 $HOME/src
+    ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
+    mkdir -p $HOME/.config/kitty
+    ln -sf "$MR_REPO/diff.conf" $HOME/.config/kitty/diff.conf
+    ln -sf "$MR_REPO/dracula.conf" $HOME/.config/kitty/dracula.conf
+    grep -q "include dracula.conf" ~/.config/kitty/kitty.conf || echo "include dracula.conf" >> ~/.config/kitty/kitty.conf
+
 [$HOME/src/github.com/dracula/midnight-commander]
 checkout = git clone 'https://github.com/dracula/midnight-commander.git' 'midnight-commander'
 skip = ([ "$1" = update ] && ! hours_since "$1" 12)
