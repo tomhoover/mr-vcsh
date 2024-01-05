@@ -114,7 +114,7 @@ fixups =
 
 [$HOME/fin]
 checkout = git clone -o gitea 'gitea:tom/fin.git' 'fin'
-skip = ! mycomputer
+skip = ! mylaptop
 push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push --all gitea; git push gitolite1 ; git push gitolite2 || true
 fixups =
     cd "$MR_REPO"
