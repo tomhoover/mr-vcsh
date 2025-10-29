@@ -1,13 +1,30 @@
 [$HOME/.config/vcsh/repo.d/apt.git]
 checkout =
     vcsh clone 'https://github.com/tomhoover/apt-vcsh.git' 'apt'
-    cd "$MR_REPO"
-    vcsh apt remote add gitea gitea:tom/apt-vcsh.git
-    vcsh apt remote add gitolite1 gitolite1:tom/apt-vcsh.git
-    vcsh apt remote add gitolite2 gitolite2:tom/apt-vcsh.git
+#     cd "$MR_REPO"
+#     vcsh apt remote add gitea gitea:tom/apt-vcsh.git
+#     vcsh apt remote add gitolite1 gitolite1:tom/apt-vcsh.git
+#     vcsh apt remote add gitolite2 gitolite2:tom/apt-vcsh.git
 skip = ! apt
-push = vcsh apt push origin master; vcsh apt push --all gitea; vcsh apt push gitolite1; vcsh apt push gitolite2 || true
-fixups = chmod -R go= $HOME/.config
+fetch = vcsh apt fetch --all --prune
+push =
+    check origin    && vcsh apt push origin master  || echo "origin not responding"
+    check bethel    && vcsh apt push --all bethel   || echo "bethel not responding"
+    check gitea     && vcsh apt push gitea          || echo "gitea not responding"
+    check gitolite  && vcsh apt push --all gitolite || echo "gitolite not responding"
+    check gitolite1 && vcsh apt push gitolite1      || echo "gitolite1 not responding"
+    check gitolite2 && vcsh apt push gitolite2      || echo "gitolite2 not responding"
+fixups =
+    chmod -R go= $HOME/.config
+    cd "$MR_REPO"
+    # grep -q '\[remote "gitolite"\]'  config && vcsh apt remote remove gitolite  || true
+    # grep -q '\[remote "gitolite1"\]' config && vcsh apt remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' config && vcsh apt remote remove gitolite2 || true
+    grep -q '\[remote "bethel"\]'    config || vcsh apt remote add bethel    bethel:git/apt-vcsh.git
+    grep -q '\[remote "gitea"\]'     config || vcsh apt remote add gitea     gitea:tom/apt-vcsh.git
+    grep -q '\[remote "gitolite"\]'  config || vcsh apt remote add gitolite  gitolite:pub/apt-vcsh.git
+    grep -q '\[remote "gitolite1"\]' config || vcsh apt remote add gitolite1 gitolite1:pub/apt-vcsh.git
+    grep -q '\[remote "gitolite2"\]' config || vcsh apt remote add gitolite2 gitolite2:pub/apt-vcsh.git
 
 ##### read-only repos
 

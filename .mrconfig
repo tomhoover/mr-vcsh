@@ -1,14 +1,20 @@
 [DEFAULT]
-
 jobs = 5
 git_gc = git gc "$@"
 git_dum = git diff --name-status upstream/master 2>/dev/null || true
-git_fetch = git fetch --all --prune
+git_fetch = git fetch --all --prune "$@"
+# git_update = check $(git branch -avv | egrep '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') >/dev/null 2>&1 && git pull "$@" || echo "\033[0;31m $(git branch -avv | egrep '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') not responding\033[0m"
 
 # Show verbose output about tags, branches or remotes
 git_tags = git tag -l
 git_branches = git branch -a
 git_remotes = git remote -v
+
+# git_update_prepend = timeout 1 git ls-remote "$@" >/dev/null 2>&1 && \
+# git_update_prepend = echo "$@" && \
+
+# git_update_append = || echo "repository not responding"
+# git_update_append = echo "$@"
 
 # Tests used below.
 # - anon checks whether this is an anonymous checkout, by testing what url
@@ -70,69 +76,218 @@ lib =
     zfs() {
         command -v zpool >/dev/null 2>&1 && command -v zfs >/dev/null 2>&1
     }
+    check() {
+        if timeout 2 git ls-remote $@ >/dev/null 2>&1; then
+            echo "\033[0;36m $@:\033[0m"
+            return 0
+        else
+            echo "\033[0;31m $@ not responding\033[0m"
+            return 1
+        fi
+    }
+    fetchOrigin() {
+        check origin && git fetch --prune "$@" || true
+    }
+    fetchBethel() {
+        check bethel && git fetch --prune "$@" || true
+    }
+    fetchGitea() {
+        return 0
+        check gitea && git fetch --prune "$@" || true
+    }
+    fetchGitolite() {
+        check gitolite && git fetch --prune "$@" || true
+    }
+    fetchGitolite1() {
+        return 0
+        check gitolite1 && git fetch --prune "$@" || true
+    }
+    fetchGitolite2() {
+        return 0
+        check gitolite2 && git fetch --prune "$@" || true
+    }
+    fetchUpstream() {
+        check upstream && git fetch --prune "$@" || true
+    }
+    pushOriginMaster() {
+        check origin && git push origin master || true
+    }
+    pushOrigin() {
+        check origin && git push origin || true
+    }
+    pushBethel() {
+        check bethel && git push bethel || true
+    }
+    pushGitea() {
+        return 0
+        check gitea && git push gitea || true
+    }
+    pushGitolite() {
+        check gitolite && git push gitolite || true
+    }
+    pushGitolite1() {
+        return 0
+        check gitolite1 && git push gitolite1 || true
+    }
+    pushGitolite2() {
+        return 0
+        check gitolite2 && git push gitolite2 || true
+    }
+    pushAllOrigin() {
+        check origin && git push --all origin || true
+    }
+    pushAllBethel() {
+        check bethel && git push --all bethel || true
+    }
+    pushAllGitea() {
+        return 0
+        check gitea && git push --all gitea || true
+    }
+    pushAllGitolite() {
+        check gitolite && git push --all gitolite || true
+    }
+#     checkOrigin() {
+#         if timeout 1 git ls-remote origin >/dev/null 2>&1; then
+#             echo "\033[0;36m origin:\033[0m"
+#             return 0
+#         else
+#             echo "\033[0;31m origin not responding\033[0m"
+#             return 1
+#         fi
+#     }
 
-### common repos
-
-[$HOME/.ansible]
-checkout = git clone -o gitea 'gitea:tom/ansible.git' '.ansible'
-skip = ! mycomputer
-push = git push --all gitea; git push gitolite1; git push gitolite2 || true
-fixups =
-    cd "$MR_REPO"
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/ansible.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/ansible.git
+##### common repos
 
 [$HOME/.dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' '.dotfiles'
-push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
+fetch = fetchOrigin; fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push = pushOriginMaster; pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
 fixups =
     cd "$MR_REPO"
-    grep -q gitea     .git/config || git remote add gitea gitea:tom/dotfiles.git
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/dotfiles.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/dotfiles.git
-
-[$HOME/.gnupg]
-checkout = git clone -o gitea 'gitea:tom/gnupg.git' '.gnupg'
-skip = ! mycomputer
-push = git push --all gitea; git push gitolite1; git push gitolite2 || true
-fixups =
-    chmod -R go= $HOME/.gnupg
-    cd "$MR_REPO"
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:gnupg.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:gnupg.git
-    grep -q ironkey   .git/config || git remote add ironkey /Volumes/IRONKEY64/git/gnupg.git
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/dotfiles.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/dotfiles.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/dotfiles.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/dotfiles.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/dotfiles.git
 
 [$HOME/bin]
 checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
-push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
+fetch = fetchOrigin; fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push = pushOriginMaster; pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
 fixups =
     chmod 755 $HOME/bin
     cd "$MR_REPO"
-    grep -q gitea     .git/config || git remote add gitea gitea:tom/bin.git
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/bin.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/bin.git
-
-[$HOME/fin]
-checkout = git clone -o gitea 'gitea:tom/fin.git' 'fin'
-skip = ! mylaptop
-push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && git push --all gitea; git push gitolite1 ; git push gitolite2 || true
-fixups =
-    cd "$MR_REPO"
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/fin.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/fin.git
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/bin.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/bin.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/bin.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/bin.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/bin.git
 
 [$HOME/src/github.com/tomhoover/simplesnap]
 checkout = git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
 skip = ! mycomputer
-push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
+fetch = fetchOrigin; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchUpstream
+push  = pushOriginMaster; pushAllGitolite; pushGitolite1; pushGitolite2
 fixups =
     cd "$MR_REPO"
-    grep -q gitea     .git/config || git remote add gitea gitea:tom/simplesnap.git
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/simplesnap.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/simplesnap.git
-    grep -q upstream  .git/config || git remote add upstream https://github.com/jgoerzen/simplesnap.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/simplesnap.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/simplesnap.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/simplesnap.git
+    grep -q '\[remote "upstream"\]'  .git/config || git remote add upstream  https://github.com/jgoerzen/simplesnap.git
+    grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
+    grep -q '\[remote "gitea"\]'     .git/config && git remote remove gitea  || true
 
-### read-only repos
+##### private repos
+
+[$HOME/.ansible]
+checkout = git clone -o gitolite 'gitolite:ansible.git' '.ansible'
+skip = ! mycomputer
+fetch = fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push  = pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+fixups =
+    cd "$MR_REPO"
+    # grep -q '\[remote "gitolite"\]'  .git/config && git remote remove gitolite  || true
+    # grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/ansible.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/ansible.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:ansible.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:ansible.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:ansible.git
+    grep -q '\[remote "origin"\]'    .git/config && git remote remove origin || true
+
+[$HOME/.gnupg]
+checkout = git clone -o gitolite 'gitolite:gnupg.git' '.gnupg'
+skip = ! mycomputer
+fetch = fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push  = pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+fixups =
+    chmod -R go= $HOME/.gnupg
+    cd "$MR_REPO"
+    # grep -q '\[remote "gitolite"\]'  .git/config && git remote remove gitolite  || true
+    # grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/gnupg.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/gnupg.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:gnupg.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:gnupg.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:gnupg.git
+    grep -q '\[remote "ironkey"\]'   .git/config || git remote add ironkey   /Volumes/IRONKEY64/git/gnupg.git
+    grep -q '\[remote "origin"\]'    .git/config && git remote remove origin || true
+
+[$HOME/fin]
+checkout = git clone -o gitolite 'gitolite:fin.git' 'fin'
+skip = ! mylaptop
+fetch = fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2 || true
+fixups =
+    cd "$MR_REPO"
+    # grep -q '\[remote "gitolite"\]'  .git/config && git remote remove gitolite  || true
+    # grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/fin.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/fin.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:fin.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:fin.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:fin.git
+    grep -q '\[remote "origin"\]'    .git/config && git remote remove origin || true
+
+[$HOME/src/homelab]
+checkout = git clone -o gitolite 'gitolite:homelab.git' 'homelab'
+skip = ! mycomputer
+fetch = fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push  = pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+fixups =
+    cd "$MR_REPO"
+    # grep -q '\[remote "gitolite"\]'  .git/config && git remote remove gitolite  || true
+    # grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/homelab.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/homelab.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:homelab.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:homelab.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:homelab.git
+    grep -q '\[remote "origin"\]'    .git/config && git remote remove origin || true
+
+[$HOME/src/zLinux-bin]
+checkout = git clone -o gitolite 'gitolite:zLinux-bin.git' 'zLinux-bin'
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
+fetch = fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push  = pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+fixups =
+    chmod 755 $HOME/src
+    cd "$MR_REPO"
+    # grep -q '\[remote "gitolite"\]'  .git/config && git remote remove gitolite  || true
+    # grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/zLinux-bin.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/zLinux-bin.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:zLinux-bin.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:zLinux-bin.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:zLinux-bin.git
+    grep -q '\[remote "origin"\]'    .git/config && git remote remove origin || true
+
+##### read-only repos
 
 [$HOME/src/github.com/dracula/kitty]
 checkout = git clone 'https://github.com/dracula/kitty.git' 'kitty'
@@ -140,7 +295,7 @@ skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
     chmod 755 $HOME/src
-    ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
+    # ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
     mkdir -p $HOME/.config/kitty
     ln -sf "$MR_REPO/diff.conf" $HOME/.config/kitty/diff.conf
     ln -sf "$MR_REPO/dracula.conf" $HOME/.config/kitty/dracula.conf
@@ -152,7 +307,7 @@ skip = ([ "$1" = update ] && ! hours_since "$1" 12)
 push = :
 fixups =
     chmod 755 $HOME/src
-    ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
+    # ln -nsf "$HOME/src/github.com" "$HOME/src/gh"
     mkdir -p $HOME/.local/share/mc/skins
     ln -sf "$MR_REPO/skins/dracula.ini" $HOME/.local/share/mc/skins/dracula.ini
     ln -sf "$MR_REPO/skins/dracula256.ini" $HOME/.local/share/mc/skins/dracula256.ini
@@ -180,7 +335,7 @@ fixups =
     ln -sf "$MR_REPO/z.sh" $HOME/.local/share/z.sh
     chmod go= $HOME/.local && chmod go= $HOME/.local/share
 
-### zfs stuff
+##### zfs stuff
 
 [$HOME/src/github.com/jimsalterjrs/sanoid]
 checkout = git clone 'https://github.com/jimsalterjrs/sanoid.git' 'sanoid'
@@ -199,12 +354,13 @@ fixups =
     ln -sf "$MR_REPO/sbin/zfsnap.sh" /usr/local/sbin/zfsnap.sh
     ln -sf "$MR_REPO/man/man8/zfsnap.8" /usr/local/share/man/man8/zfsnap.8
 
-### included repos
+##### included repos
 
 include = cat $HOME/.config/mr/$(uname).mrconfig || true
 # As arch does not install 'hostname' by default, replaced '$(hostname -s)' with '$(uname -n | sed 's/\..*//')':
 include = cat $HOME/.config/mr/$(uname -n | sed 's/\..*//').mrconfig || true
 include = cat $HOME/.config/mr/home_automation.mrconfig || true
 include = cat $HOME/.config/mr/vcsh.mrconfig || true
-include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/.mrconfig || true
+# include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/.mrconfig || true
+# include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/3dPrinting/.mrconfig || true
 # include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/github.com/.mrconfig || true

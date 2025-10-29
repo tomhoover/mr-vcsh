@@ -1,18 +1,44 @@
 ##### my Home Assistant config
 
+# no longer available on github
+# [$HOME/src/docker-compose-ha]
+# checkout = git clone 'https://github.com/tomhoover/docker-compose-ha.git' 'docker-compose-ha'
+# skip = ! mylaptop
+# fetch = fetchOrigin; fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+# push  = pushOriginMaster; pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+# fixups =
+#     cd "$MR_REPO"
+#     grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/docker-compose-ha.git
+#     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/docker-compose-ha.git
+#     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/docker-compose-ha.git
+#     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/docker-compose-ha.git
+#     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/docker-compose-ha.git
+
 [$HOME/src/hass]
 checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
-skip = ! mydesktop
-push = git push origin master; git push --all gitea; git push gitolite1; git push gitolite2 || true
+skip = ! mylaptop
+fetch = fetchOrigin; fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push  = pushOriginMaster; pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
 fixups =
     cd "$MR_REPO"
-    grep -q gitea     .git/config || git remote add gitea gitea:tom/home-assistant_config.git
-    grep -q gitolite1 .git/config || git remote add gitolite1 gitolite1:tom/home-assistant_config.git
-    grep -q gitolite2 .git/config || git remote add gitolite2 gitolite2:tom/home-assistant_config.git
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/home-assistant_config.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/home-assistant_config.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/home-assistant_config.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/home-assistant_config.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/home-assistant_config.git
 
 [$HOME/src/mqttwarn]
 checkout = git clone 'https://github.com/tomhoover/mqttwarn.git' 'mqttwarn'
-skip = ! mydesktop || ([ "$1" = update ] && ! hours_since "$1" 12)
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
+fetch = fetchOrigin; fetchBethel; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
+push  = pushOriginMaster; pushAllBethel; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+fixups =
+    cd "$MR_REPO"
+    grep -q '\[remote "bethel"\]'    .git/config || git remote add bethel    bethel:git/mqttwarn.git
+    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/mqttwarn.git
+    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/mqttwarn.git
+    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/mqttwarn.git
+    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/mqttwarn.git
 
 ##### read-only repos
 

@@ -1,4 +1,5 @@
 ~/src/.mrconfig
+~/src/3dPrinting/.mrconfig
 ~/src/github.com/.mrconfig
 ~/.config/mr/Darwin.mrconfig
 ~/.config/mr/Linux.mrconfig
@@ -12,3 +13,4 @@
 ~/data/software/gh-backup/.mrconfig
 ~/data/software/gh-backup/starred/.mrconfig
 ~/data/software/gh-backup/tomhoover/.mrconfig
+~/tmp/tmp.mrconfig
