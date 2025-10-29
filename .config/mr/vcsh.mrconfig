@@ -140,10 +140,11 @@ fixups =
     grep -q '\[remote "origin"\]'    config && vcsh QIDIStudio remote remove origin || true
 
 [$HOME/.config/vcsh/repo.d/private.git]
-checkout =
-    vcsh clone -o gitolite 'gitolite:private-vcsh.git' 'private'
+# checkout =
+    # vcsh clone -o gitolite 'gitolite:private-vcsh.git' 'private'
     # vcsh private config core.sharedrepository 600
     # vcsh private config receive.denyNonFastForwards true
+checkout = vcsh clone -o gitolite 'gitolite:private-vcsh.git' 'private'
 skip = ! mycomputer && ! private
 fetch = vcsh private fetch --all --prune
 push =
@@ -156,6 +157,8 @@ fixups =
     chmod -R go= $HOME/.config
     chmod 600 $HOME/.ssh/*_rsa
     chmod 600 $HOME/.my.cnf
+    [[ $(hostname -s) == ariel || $(hostname -s) == bethel ]] && ln -nsf "$HOME/.config/karabiner-`hostname -s`" "$HOME/.config/karabiner" || true
+    [[ $(hostname -s) == ariel || $(hostname -s) == bethel ]] && launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.karabiner_console_user_server|| true
     cd "$MR_REPO"
     # grep -q '\[remote "gitolite"\]'  config && vcsh private remote remove gitolite  || true
     # grep -q '\[remote "gitolite1"\]' config && vcsh private remote remove gitolite1 || true
