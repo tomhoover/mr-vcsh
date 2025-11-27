@@ -10,7 +10,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/homebrew-brewfile.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/homebrew-brewfile.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/homebrew-brewfile.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/homebrew-brewfile.git && git init --bare $HOME/.git/homebrew-brewfile.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/homebrew-brewfile.git && git init --bare $HOME/git/homebrew-brewfile.git )
 
 [$HOME/src/github.com/tomhoover/Check-RAID]
 checkout = git clone 'https://github.com/tomhoover/Check-RAID.git' 'Check-RAID'

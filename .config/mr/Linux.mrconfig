@@ -17,7 +17,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  config || vcsh apt remote add gitolite  gitolite:pub/apt-vcsh.git
     grep -q '\[remote "gitolite1"\]' config || vcsh apt remote add gitolite1 gitolite1:pub/apt-vcsh.git
     grep -q '\[remote "gitolite2"\]' config || vcsh apt remote add gitolite2 gitolite2:pub/apt-vcsh.git
-    grep -q '\[remote "localhost"\]' config || ( vcsh apt remote add localhost $HOME/.git/apt-vcsh.git && git init --bare $HOME/.git/apt-vcsh.git )
+    grep -q '\[remote "localhost"\]' config || ( vcsh apt remote add localhost $HOME/git/apt-vcsh.git && git init --bare $HOME/git/apt-vcsh.git )
 
 ##### read-only repos
 

@@ -13,7 +13,7 @@
 #     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/docker-compose-ha.git
 #     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/docker-compose-ha.git
 #     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/docker-compose-ha.git
-    # grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/docker-compose-ha.git && git init --bare $HOME/.git/docker-compose-ha.git )
+    # grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/docker-compose-ha.git && git init --bare $HOME/git/docker-compose-ha.git )
 
 [$HOME/src/hass]
 checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
@@ -27,7 +27,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/home-assistant_config.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/home-assistant_config.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/home-assistant_config.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/home-assistant_config.git && git init --bare $HOME/.git/home-assistant_config.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/home-assistant_config.git && git init --bare $HOME/git/home-assistant_config.git )
 
 [$HOME/src/mqttwarn]
 checkout = git clone 'https://github.com/tomhoover/mqttwarn.git' 'mqttwarn'
@@ -41,7 +41,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/mqttwarn.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/mqttwarn.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/mqttwarn.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/mqttwarn.git && git init --bare $HOME/.git/mqttwarn.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/mqttwarn.git && git init --bare $HOME/git/mqttwarn.git )
 
 ##### read-only repos
 

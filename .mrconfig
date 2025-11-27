@@ -169,7 +169,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/dotfiles.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/dotfiles.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/dotfiles.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/dotfiles.git && git init --bare $HOME/.git/dotfiles.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/dotfiles.git && git init --bare $HOME/git/dotfiles.git )
 
 [$HOME/bin]
 checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
@@ -183,7 +183,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/bin.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/bin.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/bin.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/bin.git && git init --bare $HOME/.git/bin.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/bin.git && git init --bare $HOME/git/bin.git )
 
 [$HOME/src/github.com/tomhoover/simplesnap]
 checkout = git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
@@ -214,7 +214,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:ansible.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:ansible.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:ansible.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/ansible.git && git init --bare $HOME/.git/ansible.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/ansible.git && git init --bare $HOME/git/ansible.git )
 
 [$HOME/.gnupg]
 checkout = git clone -o gitolite 'gitolite:gnupg.git' '.gnupg'
@@ -231,7 +231,7 @@ fixups =
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:gnupg.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:gnupg.git
     grep -q '\[remote "ironkey"\]'   .git/config || git remote add ironkey   /Volumes/IRONKEY64/git/gnupg.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/gnupg.git && git init --bare $HOME/.git/gnupg.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/gnupg.git && git init --bare $HOME/git/gnupg.git )
 
 [$HOME/fin]
 checkout = git clone -o gitolite 'gitolite:fin.git' 'fin'
@@ -246,7 +246,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:fin.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:fin.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:fin.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/fin.git && git init --bare $HOME/.git/fin.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/fin.git && git init --bare $HOME/git/fin.git )
 
 [$HOME/src/homelab]
 checkout = git clone -o gitolite 'gitolite:homelab.git' 'homelab'
@@ -261,7 +261,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:homelab.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:homelab.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:homelab.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/homelab.git && git init --bare $HOME/.git/homelab.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/homelab.git && git init --bare $HOME/git/homelab.git )
 
 [$HOME/src/zLinux-bin]
 checkout = git clone -o gitolite 'gitolite:zLinux-bin.git' 'zLinux-bin'
@@ -277,7 +277,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:zLinux-bin.git
     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:zLinux-bin.git
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:zLinux-bin.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/.git/zLinux-bin.git && git init --bare $HOME/.git/zLinux-bin.git )
+    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/zLinux-bin.git && git init --bare $HOME/git/zLinux-bin.git )
 
 ##### read-only repos
 
