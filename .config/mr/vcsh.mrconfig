@@ -1,5 +1,6 @@
 [$HOME/.config/vcsh/repo.d/crontab.git]
 checkout = vcsh clone 'https://github.com/tomhoover/crontab-vcsh.git' 'crontab'
+update = check origin && vcsh run "$MR_REPO" git pull "$@"
 skip = root
 fetch = vcsh crontab fetch --all --prune
 push =
@@ -26,6 +27,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/dotfiles.git]
 checkout = vcsh clone 'https://github.com/tomhoover/dotfiles-vcsh.git' 'dotfiles'
+update = check origin && vcsh run "$MR_REPO" git pull "$@"
 fetch = vcsh dotfiles fetch --all --prune
 push =
     check origin    && vcsh dotfiles push origin master   || true
@@ -46,6 +48,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/git.git]
 checkout = vcsh clone 'https://github.com/tomhoover/git-vcsh.git' 'git'
+update = check origin && vcsh run "$MR_REPO" git pull "$@"
 fetch = vcsh git fetch --all --prune
 push =
     check origin    && vcsh git push origin master   || true
@@ -67,6 +70,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/mr.git]
 checkout = vcsh clone 'https://github.com/tomhoover/mr-vcsh.git' 'mr'
+update = check origin && vcsh run "$MR_REPO" git pull "$@"
 fetch = vcsh mr fetch --all --prune
 push =
     check origin    && vcsh mr push origin master   || true
@@ -89,6 +93,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/OrcaSlicer.git]
 checkout = vcsh clone -o gitolite 'gitolite:OrcaSlicer-vcsh.git' 'OrcaSlicer'
+update = check gitolite && vcsh run "$MR_REPO" git pull "$@"
 skip = ! mylaptop
 fetch = vcsh OrcaSlicer fetch --all --prune
 push =
@@ -109,6 +114,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/QIDIStudio.git]
 checkout = vcsh clone -o gitolite 'gitolite:QIDIStudio-vcsh.git' 'QIDIStudio'
+update = check gitolite && vcsh run "$MR_REPO" git pull "$@"
 skip = ! mylaptop
 fetch = vcsh QIDIStudio fetch --all --prune
 push =
@@ -133,6 +139,7 @@ fixups =
     # vcsh private config core.sharedrepository 600
     # vcsh private config receive.denyNonFastForwards true
 checkout = vcsh clone -o gitolite 'gitolite:private-vcsh.git' 'private'
+update = check gitolite && vcsh run "$MR_REPO" git pull "$@"
 skip = ! mycomputer && ! private
 fetch = vcsh private fetch --all --prune
 push =
@@ -167,6 +174,7 @@ fixups =
 
 [$HOME/.config/vcsh/repo.d/vault.git]
 checkout = vcsh clone -o gitolite 'gitolite:vault-vcsh.git' 'vault'
+update = check gitolite && vcsh run "$MR_REPO" git pull "$@"
 skip = ! mylaptop
 fetch = vcsh vault fetch --all --prune
 push =

@@ -1,5 +1,6 @@
 [$HOME/.config/vcsh/repo.d/apt.git]
 checkout = vcsh clone 'https://github.com/tomhoover/apt-vcsh.git' 'apt'
+update = check origin && vcsh run "$MR_REPO" git pull "$@"
 skip = ! apt
 fetch = vcsh apt fetch --all --prune
 push =
