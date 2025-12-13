@@ -27,7 +27,8 @@ git_remotes = git remote -v
 # - mylaptop only succeeds if it's on my main development laptop, which
 #   gets lots of extra cruft
 lib =
-    hostname="$(hostname -s)"
+    # hostname="$(hostname -s)"
+    command -v hostnamectl >/dev/null && hostname="$(hostnamectl hostname)" || hostname="$(hostname -s)"
     whoami="$(whoami)"
     anon() {
         ( GIT_CONFIG=$HOME/.git/config git config remote.origin.url || cat .git/remotes/origin ) | grep -q 'git://'
