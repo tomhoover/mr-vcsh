@@ -3,8 +3,8 @@ jobs = 5
 git_gc = git gc "$@"
 git_dum = git diff --name-status upstream/master 2>/dev/null || true
 git_fetch = git fetch --all --prune "$@"
-git_update = check $(git branch -avv | egrep '^[* ]*master.*\[|^[* ]*main.*\[' | sed -e 's/^.*\[//' -e 's/\/.*//') && git pull "$@"
-# git_update = check $(git branch -avv | egrep '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') >/dev/null 2>&1 && git pull "$@" || echo "\033[0;31m $(git branch -avv | egrep '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') not responding\033[0m"
+git_update = check $(git branch -avv | grep -E '^[* ]*master.*\[|^[* ]*main.*\[' | sed -e 's/^.*\[//' -e 's/\/.*//') && git pull "$@"
+# git_update = check $(git branch -avv | grep -E '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') >/dev/null 2>&1 && git pull "$@" || echo "\033[0;31m $(git branch -avv | egrep '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') not responding\033[0m"
 
 # Show verbose output about tags, branches or remotes
 git_tags = git tag -l
