@@ -152,8 +152,8 @@ fixups =
     chmod -R go= $HOME/.config
     chmod 600 $HOME/.ssh/*_rsa
     chmod 600 $HOME/.my.cnf
-    [[ $(hostname -s) == ariel || $(hostname -s) == bethel ]] && ln -nsf "$HOME/.config/karabiner-`hostname -s`" "$HOME/.config/karabiner" || true
-    [[ $(hostname -s) == ariel || $(hostname -s) == bethel ]] && launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.karabiner_console_user_server|| true
+    [[ $hostname == ariel || $hostname == bethel ]] && ln -nsf "$HOME/.config/karabiner-`hostname -s`" "$HOME/.config/karabiner" || true
+    [[ $hostname == ariel || $hostname == bethel ]] && launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.karabiner_console_user_server|| true
     cd "$MR_REPO"
     grep -q '\[remote "origin"\]'    config && vcsh private remote remove origin || true
     grep -q '\[remote "bethel"\]'    config && vcsh private remote remove bethel || true
