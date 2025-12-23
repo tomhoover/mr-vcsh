@@ -4,20 +4,13 @@ git_gc = git gc "$@"
 git_dum = git diff --name-status upstream/master 2>/dev/null || true
 git_fetch = git fetch --all --prune "$@"
 git_update = check $(git branch -avv | grep -E '^[* ]*master.*\[|^[* ]*main.*\[' | sed -e 's/^.*\[//' -e 's/\/.*//') && git pull "$@"
-# git_update = check $(git branch -avv | grep -E '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') >/dev/null 2>&1 && git pull "$@" || echo "\033[0;31m $(git branch -avv | egrep '^[* ]*master|^[* ]*main' | sed -e 's/^.*\[//' -e 's/\/.*//') not responding\033[0m"
 
-# Show verbose output about tags, branches or remotes
-git_tags = git tag -l
+# Show verbose output about branches, remotes or tags
 git_branches = git branch -a
 git_remotes = git remote -v
+git_tags = git tag -l
 
-# git_update_prepend = timeout 1 git ls-remote "$@" >/dev/null 2>&1 && \
-# git_update_prepend = echo "$@" && \
-
-# git_update_append = || echo "repository not responding"
-# git_update_append = echo "$@"
-
-##### include 'lib' functions:
+# include 'lib' functions:
 include = cat $HOME/.config/mr/LIB.mrconfig || true
 
 ##### common repos
