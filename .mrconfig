@@ -51,7 +51,7 @@ fixups =
 
 [$HOME/src/github.com/tomhoover/simplesnap]
 checkout = git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
-skip = ! mycomputer
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = fetchOrigin; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchUpstream
 push  = pushOriginMaster; pushAllGitolite; pushGitolite1; pushGitolite2
 fixups =
@@ -67,7 +67,7 @@ fixups =
 
 [$HOME/.ansible]
 checkout = git clone -o gitolite 'gitolite:ansible.git' '.ansible'
-skip = ! mycomputer
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
 push  = pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost
 fixups =
@@ -82,7 +82,7 @@ fixups =
 
 [$HOME/.gnupg]
 checkout = git clone -o gitolite 'gitolite:gnupg.git' '.gnupg'
-skip = ! mycomputer
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
 push  = pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost
 fixups =
@@ -99,7 +99,7 @@ fixups =
 
 [$HOME/fin]
 checkout = git clone -o gitolite 'gitolite:fin.git' 'fin'
-skip = ! mylaptop
+skip = ! mylaptop || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
 push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost || true
 fixups =
@@ -114,7 +114,7 @@ fixups =
 
 [$HOME/src/homelab]
 checkout = git clone -o gitolite 'gitolite:homelab.git' 'homelab'
-skip = ! mycomputer
+skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
 push  = pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost
 fixups =
