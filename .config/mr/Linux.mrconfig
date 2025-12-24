@@ -7,17 +7,19 @@ push =
     check origin    && vcsh apt push origin master   || true
     check gitea     && vcsh apt push gitea           || true
     check gitolite  && vcsh apt push --all gitolite  || true
-    check gitolite1 && vcsh apt push gitolite1       || true
-    check gitolite2 && vcsh apt push gitolite2       || true
+    # check gitolite1 && vcsh apt push gitolite1       || true
+    # check gitolite2 && vcsh apt push gitolite2       || true
     check localhost && vcsh apt push --all localhost || true
 fixups =
     chmod -R go= $HOME/.config
     cd "$MR_REPO"
     grep -q '\[remote "bethel"\]'    config && vcsh apt remote remove bethel || true
+    grep -q '\[remote "gitolite1"\]' config && vcsh apt remote remove gitolite1 || true
+    grep -q '\[remote "gitolite2"\]' config && vcsh apt remote remove gitolite2 || true
     grep -q '\[remote "gitea"\]'     config || vcsh apt remote add gitea     gitea:tom/apt-vcsh.git
     grep -q '\[remote "gitolite"\]'  config || vcsh apt remote add gitolite  gitolite:pub/apt-vcsh.git
-    grep -q '\[remote "gitolite1"\]' config || vcsh apt remote add gitolite1 gitolite1:pub/apt-vcsh.git
-    grep -q '\[remote "gitolite2"\]' config || vcsh apt remote add gitolite2 gitolite2:pub/apt-vcsh.git
+    # grep -q '\[remote "gitolite1"\]' config || vcsh apt remote add gitolite1 gitolite1:pub/apt-vcsh.git
+    # grep -q '\[remote "gitolite2"\]' config || vcsh apt remote add gitolite2 gitolite2:pub/apt-vcsh.git
     grep -q '\[remote "localhost"\]' config || ( vcsh apt remote add localhost $HOME/git/apt-vcsh.git && git init --bare $HOME/git/apt-vcsh.git )
 
 ##### read-only repos

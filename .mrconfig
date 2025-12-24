@@ -17,43 +17,49 @@ include = cat $HOME/.config/mr/LIB.mrconfig || true
 
 [$HOME/.dotfiles]
 checkout = git clone 'https://github.com/tomhoover/dotfiles.git' '.dotfiles'
-fetch = fetchOrigin; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
-push = pushOriginMaster; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost
+fetch = fetchOrigin; fetchGitea; fetchGitolite; fetchLocalhost
+push = pushOriginMaster; pushGitea; pushAllGitolite; pushAllLocalhost
 fixups =
     cd "$MR_REPO"
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
+    grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/dotfiles.git
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/dotfiles.git
-    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/dotfiles.git
-    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/dotfiles.git
+    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/dotfiles.git
+    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/dotfiles.git
     grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/dotfiles.git && git init --bare $HOME/git/dotfiles.git )
 
 [$HOME/bin]
 checkout = git clone 'https://github.com/tomhoover/bin.git' 'bin'
-fetch = fetchOrigin; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
-push = pushOriginMaster; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost
+fetch = fetchOrigin; fetchGitea; fetchGitolite; fetchLocalhost
+push = pushOriginMaster; pushGitea; pushAllGitolite; pushAllLocalhost
 fixups =
     chmod 755 $HOME/bin
     cd "$MR_REPO"
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
+    grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/bin.git
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/bin.git
-    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/bin.git
-    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/bin.git
+    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/bin.git
+    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/bin.git
     grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/bin.git && git init --bare $HOME/git/bin.git )
 
 [$HOME/src/github.com/tomhoover/simplesnap]
 checkout = git clone 'https://github.com/tomhoover/simplesnap.git' 'simplesnap'
 skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
-fetch = fetchOrigin; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchUpstream
-push  = pushOriginMaster; pushAllGitolite; pushGitolite1; pushGitolite2
+fetch = fetchOrigin; fetchGitolite; fetchUpstream
+push  = pushOriginMaster; pushAllGitolite
 fixups =
     cd "$MR_REPO"
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
     grep -q '\[remote "gitea"\]'     .git/config && git remote remove gitea  || true
+    grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/simplesnap.git
-    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/simplesnap.git
-    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/simplesnap.git
+    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/simplesnap.git
+    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/simplesnap.git
     grep -q '\[remote "upstream"\]'  .git/config || git remote add upstream  https://github.com/jgoerzen/simplesnap.git
 
 ##### private repos
