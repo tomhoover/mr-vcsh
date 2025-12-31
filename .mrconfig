@@ -126,22 +126,6 @@ fixups =
     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:homelab.git
     grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/homelab.git && git init --bare $HOME/git/homelab.git )
 
-[$HOME/src/zLinux-bin]
-checkout = git clone -o gitolite 'gitolite:zLinux-bin.git' 'zLinux-bin'
-skip = ! mycomputer || ([ "$1" = update ] && ! hours_since "$1" 12)
-fetch = fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2; fetchLocalhost
-push  = pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2; pushAllLocalhost
-fixups =
-    chmod 755 $HOME/src
-    cd "$MR_REPO"
-    grep -q '\[remote "origin"\]'    .git/config && git remote remove origin || true
-    grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
-    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/zLinux-bin.git
-    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:zLinux-bin.git
-    grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:zLinux-bin.git
-    grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:zLinux-bin.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/zLinux-bin.git && git init --bare $HOME/git/zLinux-bin.git )
-
 ##### read-only repos
 
 [$HOME/src/github.com/dracula/kitty]
@@ -211,11 +195,12 @@ fixups =
 
 ##### included repos
 
-include = cat $HOME/.config/mr/$(uname).mrconfig || true
+# include = cat $HOME/.config/mr/$(uname).mrconfig || true
+include = cat $HOME/.config/mr/$(uname).mrconfig
 # As arch does not install 'hostname' by default, replaced '$(hostname -s)' with '$(uname -n | sed 's/\..*//')':
-include = cat $HOME/.config/mr/$(uname -n | sed 's/\..*//').mrconfig || true
-include = cat $HOME/.config/mr/home_automation.mrconfig || true
-include = cat $HOME/.config/mr/vcsh.mrconfig || true
+include = cat $HOME/.config/mr/$(uname -n | sed 's/\..*//').mrconfig
+include = cat $HOME/.config/mr/home_automation.mrconfig
+include = cat $HOME/.config/mr/vcsh.mrconfig
 # include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/.mrconfig || true
 # include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/3dPrinting/.mrconfig || true
 # include = [ "$(pwd)" = "$HOME" ] && cat $HOME/src/github.com/.mrconfig || true

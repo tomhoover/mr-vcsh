@@ -2,15 +2,15 @@
 # [$HOME/appdata/docker-compose-ha]
 # checkout = git clone 'https://github.com/tomhoover/docker-compose-ha.git' 'docker-compose-ha'
 # skip = root
-# fetch = fetchOrigin; fetchGitea; fetchGitolite; fetchGitolite1; fetchGitolite2
-# push  = pushOriginMaster; pushGitea; pushAllGitolite; pushGitolite1; pushGitolite2
+# fetch = fetchOrigin; fetchGitolite
+# push  = pushOriginMaster; pushAllGitolite
 # fixups =
 #     cd "$MR_REPO"
     # grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
-#     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/docker-compose-ha.git
+    # grep -q '\[remote "gitea"\]'     .git/config && git remote remove gitea || true
+    # grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
+    # grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
 #     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/docker-compose-ha.git
-#     grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/docker-compose-ha.git
-#     grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/docker-compose-ha.git
 
 [$HOME/appdata/hass]
 checkout = git clone 'https://github.com/tomhoover/home-assistant_config.git' 'hass'
@@ -24,8 +24,6 @@ fixups =
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/home-assistant_config.git
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/home-assistant_config.git
-    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/home-assistant_config.git
-    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/home-assistant_config.git
 
 # 2delete
 
