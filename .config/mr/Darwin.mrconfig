@@ -10,8 +10,6 @@ fixups =
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/homebrew-brewfile.git
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/homebrew-brewfile.git
-    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/homebrew-brewfile.git
-    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/homebrew-brewfile.git
     grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/homebrew-brewfile.git && git init --bare $HOME/git/homebrew-brewfile.git )
 
 [$HOME/src/github.com/tomhoover/Check-RAID]
@@ -26,8 +24,6 @@ fixups =
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea     gitea:tom/Check-RAID.git
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite  gitolite:tom/Check-RAID.git
-    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/Check-RAID.git
-    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/Check-RAID.git
     grep -q '\[remote "upstream"\]'  .git/config || git remote add upstream  https://github.com/Arko/Check-RAID.git
     cd
     chmod +x "$MR_REPO/check-raid" || true
@@ -47,8 +43,6 @@ fixups =
     grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite gitolite:tom/fsnotes.git
-    # grep -q '\[remote "gitolite1"\]' .git/config || git remote add gitolite1 gitolite1:tom/fsnotes.git
-    # grep -q '\[remote "gitolite2"\]' .git/config || git remote add gitolite2 gitolite2:tom/fsnotes.git
     grep -q '\[remote "upstream"\]'  .git/config || git remote add upstream https://github.com/glushchenko/fsnotes.git
 
 ##### read-only repos
