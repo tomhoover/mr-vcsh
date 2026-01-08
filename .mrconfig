@@ -1,8 +1,8 @@
 [DEFAULT]
-jobs = 5
+# jobs = 5
+jobs = 1
 git_gc = git gc "$@"
 git_dum = git diff --name-status upstream/master 2>/dev/null || true
-git_fetch = git fetch --all --prune "$@"
 git_update = check $(git branch -avv | grep -E '^[* ]*master.*\[|^[* ]*main.*\[' | sed -e 's/^.*\[//' -e 's/\/.*//') && git pull "$@"
 
 # Show verbose output about branches, remotes or tags
