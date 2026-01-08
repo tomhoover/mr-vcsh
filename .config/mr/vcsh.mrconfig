@@ -94,6 +94,7 @@ push =
     check localhost && vcsh OrcaSlicer push --all localhost || true
 fixups =
     cd "$MR_REPO"
+    vcsh OrcaSlicer config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh OrcaSlicer remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh OrcaSlicer remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' config && vcsh OrcaSlicer remote remove gitolite2 || true
@@ -112,6 +113,7 @@ push =
     check localhost && vcsh QIDIStudio push --all localhost || true
 fixups =
     cd "$MR_REPO"
+    vcsh QIDIStudio config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh QIDIStudio remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh QIDIStudio remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' config && vcsh QIDIStudio remote remove gitolite2 || true
@@ -139,6 +141,7 @@ fixups =
     [[ $hostname == ariel || $hostname == bethel ]] && ln -nsf "$HOME/.config/karabiner-`hostname -s`" "$HOME/.config/karabiner" || true
     [[ $hostname == ariel || $hostname == bethel ]] && launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.karabiner_console_user_server|| true
     cd "$MR_REPO"
+    vcsh private config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh private remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh private remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' config && vcsh private remote remove gitolite2 || true
@@ -167,6 +170,7 @@ push =
 fixups =
     ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
     cd "$MR_REPO"
+    vcsh vault config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh vault remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh vault remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' config && vcsh vault remote remove gitolite2 || true

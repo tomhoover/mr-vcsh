@@ -65,6 +65,7 @@ fetch = fetchOrigin; fetchGitea; fetchLocalhost
 push  = pushAllOrigin; pushAllGitea; pushAllLocalhost
 fixups =
     cd "$MR_REPO"
+    git config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
@@ -80,6 +81,7 @@ push  = pushAllOrigin; pushAllGitea; pushAllLocalhost
 fixups =
     chmod -R go= $HOME/.gnupg
     cd "$MR_REPO"
+    git config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
@@ -95,6 +97,7 @@ fetch = fetchOrigin; fetchGitea; fetchLocalhost
 push = git commit -am "$(date '+%Y-%m-%d %H:%M')" && pushAllOrigin; pushAllGitea; pushAllLocalhost || true
 fixups =
     cd "$MR_REPO"
+    git config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
@@ -109,6 +112,7 @@ fetch = fetchOrigin; fetchGitea; fetchLocalhost
 push  = pushAllOrigin; pushAllGitea; pushAllLocalhost
 fixups =
     cd "$MR_REPO"
+    git config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
