@@ -90,6 +90,7 @@ push =
     check localhost && vcsh OrcaSlicer push --all localhost || true
 fixups =
     cd "$MR_REPO"
+    #TODO
     vcsh OrcaSlicer config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh OrcaSlicer remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh OrcaSlicer remote remove gitolite1 || true
@@ -109,6 +110,7 @@ push =
     check localhost && vcsh QIDIStudio push --all localhost || true
 fixups =
     cd "$MR_REPO"
+    #TODO
     vcsh QIDIStudio config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh QIDIStudio remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh QIDIStudio remote remove gitolite1 || true
@@ -124,6 +126,7 @@ fixups =
     # vcsh private config receive.denyNonFastForwards true
 checkout = vcsh clone 'gitolite:private-vcsh.git' 'private'
 update = check origin && vcsh run "$MR_REPO" git pull "$@"
+#TODO
 skip = ! mycomputer && ! private
 fetch = vcsh private fetch --all --prune
 push =
@@ -137,6 +140,7 @@ fixups =
     [[ $hostname == ariel || $hostname == bethel ]] && ln -nsf "$HOME/.config/karabiner-`hostname -s`" "$HOME/.config/karabiner" || true
     [[ $hostname == ariel || $hostname == bethel ]] && launchctl kickstart -k gui/$(id -u)/org.pqrs.service.agent.karabiner_console_user_server|| true
     cd "$MR_REPO"
+    #TODO
     vcsh private config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh private remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh private remote remove gitolite1 || true
@@ -166,6 +170,7 @@ push =
 fixups =
     ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
     cd "$MR_REPO"
+    #TODO
     vcsh vault config remote.gitea.skipFetchAll true
     grep -q '\[remote "bethel"\]'    config && vcsh vault remote remove bethel || true
     grep -q '\[remote "gitolite1"\]' config && vcsh vault remote remove gitolite1 || true
