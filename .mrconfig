@@ -170,7 +170,7 @@ fixups =
     grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite gitolite:tom/simplesnap.git
     # forked
     grep -q '\[remote "upstream"\]'  .git/config || git remote rename origin upstream
-    grep -q '\[remote "origin"\]'    .git/config || git remote add origin https://github.com/tomhoover/simplesnap.git
+    grep -q '\[remote "origin"\]'    .git/config || ( git remote add origin https://github.com/tomhoover/simplesnap.git && git fetch origin && git branch master --set-upstream-to origin/master )
     ln -nsf "$HOME/src/github.com/jgoerzen/simplesnap" "$HOME/src/github.com/tomhoover/simplesnap"
 
 [$HOME/src/github.com/jimsalterjrs/sanoid]

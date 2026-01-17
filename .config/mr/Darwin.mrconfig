@@ -32,10 +32,10 @@ fetch = fetchOrigin; fetchGitolite; fetchUpstream
 push  = pushOriginMaster; pushAllGitolite
 fixups =
     cd "$MR_REPO"
-    grep -q '\[remote "gitolite"\]'  .git/config || git remote add gitolite gitolite:tom/fsnotes.git
+    grep -q '\[remote "gitolite"\]' .git/config || git remote add gitolite gitolite:tom/fsnotes.git
     # forked
-    grep -q '\[remote "upstream"\]'  .git/config || git remote rename origin upstream
-    grep -q '\[remote "origin"\]'    .git/config || git remote add origin https://github.com/tomhoover/fsnotes.git
+    grep -q '\[remote "upstream"\]' .git/config || git remote rename origin upstream
+    grep -q '\[remote "origin"\]'   .git/config || ( git remote add origin https://github.com/tomhoover/fsnotes.git && git fetch origin && git branch master --set-upstream-to origin/master )
     ln -nsf "$HOME/src/github.com/glushchenko/fsnotes" "$HOME/src/github.com/tomhoover/fsnotes"
 
 ##### read-only repos
