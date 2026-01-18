@@ -61,10 +61,12 @@ lib =
     }
     check() {
         if timeout 2 git ls-remote $@ >/dev/null 2>&1; then
-            echo "\033[0;36m $@:\033[0m"
+            # echo "\033[0;36m $@:\033[0m"
+            echo "`tput setaf 6` $@:`tput sgr0`"
             return 0
         else
-            echo "\033[0;31m $@ not responding\033[0m"
+            # echo "\033[0;31m $@ not responding\033[0m"
+            echo "`tput setaf 1` $@ not responding`tput sgr0`"
             return 1
         fi
     }
@@ -131,10 +133,12 @@ lib =
     }
 #     checkOrigin() {
 #         if timeout 1 git ls-remote origin >/dev/null 2>&1; then
-#             echo "\033[0;36m origin:\033[0m"
+#             # echo "\033[0;36m origin:\033[0m"
+#             echo "\`tput setaf 6` origin:`tput sgr0`"
 #             return 0
 #         else
-#             echo "\033[0;31m origin not responding\033[0m"
+#             # echo "\033[0;31m origin not responding\033[0m"
+#             echo "`tput setaf 1` origin not responding`tput sgr0`"
 #             return 1
 #         fi
 #     }
