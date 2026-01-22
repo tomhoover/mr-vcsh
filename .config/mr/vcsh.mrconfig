@@ -77,47 +77,64 @@ fixups =
     grep -q '\[remote "gitolite"\]'  config ||   vcsh mr remote add gitolite  gitolite:pub/mr-vcsh.git
     grep -q '\[remote "localhost"\]' config || ( vcsh mr remote add localhost $HOME/git/mr-vcsh.git && git init --bare $HOME/git/mr-vcsh.git )
 
-##### private repos
+##### private repos on github.com
 
 [$HOME/.config/vcsh/repo.d/OrcaSlicer.git]
-checkout = vcsh clone 'gitolite:OrcaSlicer-vcsh.git' 'OrcaSlicer'
+checkout = vcsh clone 'https://github.com/tomhoover/OrcaSlicer-vcsh.git' 'OrcaSlicer'
 update = check origin && vcsh run "$MR_REPO" git pull "$@"
 skip = ! on tom@ariel || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = vcsh OrcaSlicer fetch --all --prune
 push =
-    check origin    && vcsh OrcaSlicer push --all origin    || true
-    check gitea     && vcsh OrcaSlicer push --all gitea     || true
+    check origin    && vcsh OrcaSlicer push origin master   || true
+    check gitolite  && vcsh OrcaSlicer push --all gitolite  || true
     check localhost && vcsh OrcaSlicer push --all localhost || true
 fixups =
     cd "$MR_REPO"
-    #TODO
-    vcsh OrcaSlicer config remote.gitea.skipFetchAll true
-    grep -q '\[remote "bethel"\]'    config && vcsh OrcaSlicer remote remove bethel || true
+    grep -q '\[remote "bethel"\]'    config && vcsh OrcaSlicer remote remove bethel    || true
+    grep -q '\[remote "gitea"\]'     config && vcsh OrcaSlicer remote remove gitea     || true
     grep -q '\[remote "gitolite1"\]' config && vcsh OrcaSlicer remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' config && vcsh OrcaSlicer remote remove gitolite2 || true
-    grep -q '\[remote "gitolite"\]'  config && vcsh OrcaSlicer remote rename gitolite origin || true
-    grep -q '\[remote "gitea"\]'     config ||   vcsh OrcaSlicer remote add gitea     gitea:tom/OrcaSlicer-vcsh.git
+    grep -q '\[remote "gitolite"\]'  config ||   vcsh OrcaSlicer remote add gitolite  gitolite:OrcaSlicer-vcsh.git
     grep -q '\[remote "localhost"\]' config || ( vcsh OrcaSlicer remote add localhost $HOME/git/OrcaSlicer-vcsh.git && git init --bare $HOME/git/OrcaSlicer-vcsh.git )
 
 [$HOME/.config/vcsh/repo.d/QIDIStudio.git]
-checkout = vcsh clone 'gitolite:QIDIStudio-vcsh.git' 'QIDIStudio'
+checkout = vcsh clone 'https://github.com/tomhoover/QIDIStudio-vcsh.git' 'QIDIStudio'
 update = check origin && vcsh run "$MR_REPO" git pull "$@"
 skip = ! on tom@ariel || ([ "$1" = update ] && ! hours_since "$1" 12)
 fetch = vcsh QIDIStudio fetch --all --prune
 push =
-    check origin    && vcsh QIDIStudio push --all origin    || true
-    check gitea     && vcsh QIDIStudio push --all gitea     || true
+    check origin    && vcsh QIDIStudio push origin master   || true
+    check gitolite  && vcsh QIDIStudio push --all gitolite  || true
     check localhost && vcsh QIDIStudio push --all localhost || true
 fixups =
     cd "$MR_REPO"
-    #TODO
-    vcsh QIDIStudio config remote.gitea.skipFetchAll true
-    grep -q '\[remote "bethel"\]'    config && vcsh QIDIStudio remote remove bethel || true
+    grep -q '\[remote "bethel"\]'    config && vcsh QIDIStudio remote remove bethel    || true
+    grep -q '\[remote "gitea"\]'     config && vcsh QIDIStudio remote remove gitea     || true
     grep -q '\[remote "gitolite1"\]' config && vcsh QIDIStudio remote remove gitolite1 || true
     grep -q '\[remote "gitolite2"\]' config && vcsh QIDIStudio remote remove gitolite2 || true
-    grep -q '\[remote "gitolite"\]'  config && vcsh QIDIStudio remote rename gitolite origin || true
-    grep -q '\[remote "gitea"\]'     config ||   vcsh QIDIStudio remote add gitea     gitea:tom/QIDIStudio-vcsh.git
+    grep -q '\[remote "gitolite"\]'  config ||   vcsh QIDIStudio remote add gitolite  gitolite:QIDIStudio-vcsh.git
     grep -q '\[remote "localhost"\]' config || ( vcsh QIDIStudio remote add localhost $HOME/git/QIDIStudio-vcsh.git && git init --bare $HOME/git/QIDIStudio-vcsh.git )
+
+[$HOME/.config/vcsh/repo.d/vault.git]
+checkout = vcsh clone 'https://github.com/tomhoover/vault-vcsh.git' 'vault'
+update = check origin && vcsh run "$MR_REPO" git pull "$@"
+skip = ! mylaptop
+fetch = vcsh vault fetch --all --prune
+push =
+    check origin    && vcsh vault push origin master   || true
+    check gitolite  && vcsh vault push --all gitolite  || true
+    check localhost && vcsh vault push --all localhost || true
+fixups =
+    ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
+    cd "$MR_REPO"
+    grep -q '\[remote "bethel"\]'    config && vcsh vault remote remove bethel    || true
+    grep -q '\[remote "gitea"\]'     config && vcsh vault remote remove gitea     || true
+    grep -q '\[remote "gitolite1"\]' config && vcsh vault remote remove gitolite1 || true
+    grep -q '\[remote "gitolite2"\]' config && vcsh vault remote remove gitolite2 || true
+    grep -q '\[remote "gitolite"\]'  config ||   vcsh vault remote add gitolite  gitolite:vault-vcsh.git
+    grep -q '\[remote "localhost"\]' config || ( vcsh vault remote add localhost $HOME/git/vault-vcsh.git && git init --bare $HOME/git/vault-vcsh.git )
+
+##### private repos
 
 [$HOME/.config/vcsh/repo.d/private.git]
 # checkout =
@@ -157,24 +174,3 @@ fixups =
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2" || true
     # Tell iTerm2 to use the custom preferences in the directory
     [ `uname` = "Darwin" ] && defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true || true
-
-[$HOME/.config/vcsh/repo.d/vault.git]
-checkout = vcsh clone 'gitolite:vault-vcsh.git' 'vault'
-update = check origin && vcsh run "$MR_REPO" git pull "$@"
-skip = ! mylaptop
-fetch = vcsh vault fetch --all --prune
-push =
-    check origin    && vcsh vault push --all origin    || true
-    check gitea     && vcsh vault push --all gitea     || true
-    check localhost && vcsh vault push --all localhost || true
-fixups =
-    ln -nsf "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Vault" "$HOME/Vault"
-    cd "$MR_REPO"
-    #TODO
-    vcsh vault config remote.gitea.skipFetchAll true
-    grep -q '\[remote "bethel"\]'    config && vcsh vault remote remove bethel || true
-    grep -q '\[remote "gitolite1"\]' config && vcsh vault remote remove gitolite1 || true
-    grep -q '\[remote "gitolite2"\]' config && vcsh vault remote remove gitolite2 || true
-    grep -q '\[remote "gitolite"\]'  config && vcsh vault remote rename gitolite origin || true
-    grep -q '\[remote "gitea"\]'     config ||   vcsh vault remote add gitea     gitea:tom/vault-vcsh.git
-    grep -q '\[remote "localhost"\]' config || ( vcsh vault remote add localhost $HOME/git/vault-vcsh.git && git init --bare $HOME/git/vault-vcsh.git )
