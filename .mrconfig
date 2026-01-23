@@ -95,21 +95,6 @@ fixups =
     grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea gitea:tom/fin.git
     grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/fin.git && git init --bare $HOME/git/fin.git )
 
-[$HOME/src/homelab]
-checkout = git clone 'gitolite:homelab.git' 'homelab'
-fetch = fetchOrigin; fetchGitea; fetchLocalhost
-push  = pushAllOrigin; pushAllGitea; pushAllLocalhost
-fixups =
-    cd "$MR_REPO"
-    #TODO
-    git config remote.gitea.skipFetchAll true
-    grep -q '\[remote "bethel"\]'    .git/config && git remote remove bethel || true
-    grep -q '\[remote "gitolite1"\]' .git/config && git remote remove gitolite1 || true
-    grep -q '\[remote "gitolite2"\]' .git/config && git remote remove gitolite2 || true
-    grep -q '\[remote "gitolite"\]'  .git/config && git remote rename gitolite origin || true
-    grep -q '\[remote "gitea"\]'     .git/config || git remote add gitea gitea:tom/homelab.git
-    grep -q '\[remote "localhost"\]' .git/config || ( git remote add localhost $HOME/git/homelab.git && git init --bare $HOME/git/homelab.git )
-
 ##### read-only repos
 
 [$HOME/src/github.com/dracula/kitty]
